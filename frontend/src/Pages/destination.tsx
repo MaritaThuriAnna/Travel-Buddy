@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { containerStyle, destButtonStyle, textStyle } from './destinations.styles';
+import { buttonTextOverlayStyle, containerStyle, destButtonStyle, forImgStyle, textStyle } from './destinations.styles';
 import { Link } from 'react-router-dom';
 
 interface Destination {
@@ -19,8 +19,7 @@ export const Destinations = (): JSX.Element => {
   }, []);
 
   function generateImageUrl(destinationName: string) {
-    const imageName = destinationName;
-    const imageUrl = `/destination_images/${imageName}.jpg`;
+    const imageUrl = `../destination_images/${destinationName}.jpg`;
     console.log('Generated image URL:', imageUrl);
     return imageUrl;
   }
@@ -31,13 +30,15 @@ export const Destinations = (): JSX.Element => {
       <div style={containerStyle}>
         {destinations.map(destination => {
           const image_Url = generateImageUrl(destination.destinationName);
-
           return (
             <div key={destination.destinationId}>
               <Link to={`/Destinations/${destination.destinationId}`}>
-                <button style={{...destButtonStyle, backgroundImage: `url(${image_Url})` }}>
-                  {destination.destinationName}
-                  <img src = {}></img>
+              <button style={destButtonStyle}>
+                {/* <div style={forImgStyle}></div> */}
+                  <img src={image_Url} />
+                  <div style={buttonTextOverlayStyle}>
+                    {destination.destinationName}
+                  </div>
                 </button>
               </Link>
             </div>

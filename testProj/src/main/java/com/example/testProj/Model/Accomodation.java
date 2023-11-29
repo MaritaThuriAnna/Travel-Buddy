@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class Accomodation {
     @Id
     private Integer accomodationId;
-    @ManyToOne
-    @JoinColumn(name = "destination_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "destination_id")
     private Destination destination;
     private String accomodationName;
     private String accomodationType;

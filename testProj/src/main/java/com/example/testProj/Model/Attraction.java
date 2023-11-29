@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Attraction {
     @Id
     private Integer attractionId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "destination_id")
     private Destination destination;
 

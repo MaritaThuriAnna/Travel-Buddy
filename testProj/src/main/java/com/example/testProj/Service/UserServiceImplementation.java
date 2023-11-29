@@ -44,8 +44,19 @@ public class UserServiceImplementation implements UserService{
 
     @Override
     public User findById(Integer id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+        return userRepository.findByUserId(id);
+    }
+
+    @Override
+    public User findByUserId(Integer userId) {
+        return null;
+    }
+
+
+    @Override
+    public User getUserById(Integer userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id"));
     }
 
     @Override

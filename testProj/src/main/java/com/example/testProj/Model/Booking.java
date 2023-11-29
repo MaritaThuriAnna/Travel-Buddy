@@ -15,10 +15,10 @@ public class Booking {
     //@OneToOne pt foreign key si instanitezi un obiect al clasei!!!!
     @Id
     private Integer bookingId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Destination desinationId;
     private Integer accomodationId;
     private Date checkIn;

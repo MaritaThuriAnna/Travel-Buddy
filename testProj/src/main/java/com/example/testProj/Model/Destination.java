@@ -2,6 +2,7 @@ package com.example.testProj.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -22,10 +23,10 @@ public class Destination {
     private String destinationCurrency;
     private String destinationTimezone;
 
-    @OneToMany(mappedBy = "destination")
+    @OneToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Accomodation> accomodations;
-    @OneToMany(mappedBy = "destination")
+    @OneToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Attraction> attractions;
 }

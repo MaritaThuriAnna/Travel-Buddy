@@ -12,7 +12,7 @@ interface Destination {
 }
 
 
-const DestinationDetail = (props: DestinationDetailProps): JSX.Element => {
+const DestinationDetail = (): JSX.Element => {
     const { destinationId } = useParams<{ destinationId: string }>();
     //const {}
     const [destination, setDestination] = useState<Destination | null>(null);

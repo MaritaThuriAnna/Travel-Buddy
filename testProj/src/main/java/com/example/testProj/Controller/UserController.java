@@ -2,9 +2,11 @@ package com.example.testProj.Controller;
 
 import com.example.testProj.DTO.ObiectNou;
 import com.example.testProj.Model.Booking;
+import com.example.testProj.Model.Destination;
 import com.example.testProj.Model.User;
 import com.example.testProj.Service.UserServiceImplementation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,10 +66,21 @@ public class UserController {
         }
     }
 
-//    @PostMapping("/signUp")
-//    public void signUp(@RequestParam String userEmail, @RequestParam String userPassword){
-//        //System.out.println(u);
-//        userServiceImplementation.Insert(userEmail, userPassword);
-//    }
+    @GetMapping("/findUserById/{id}")
+    public ResponseEntity<User> findUserById(@PathVariable Integer id) {
+        User user = userServiceImplementation.findByUserId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getDestinationById(@PathVariable("id") Integer id) {
+        User user = userServiceImplementation.getUserById(id);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

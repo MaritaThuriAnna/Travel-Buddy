@@ -13,15 +13,15 @@ public class Review {
     @Id
     private Integer reviewId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "attraction_id")
     private Attraction attraction;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "accommodation_id")
     private Accomodation accommodation;
 
