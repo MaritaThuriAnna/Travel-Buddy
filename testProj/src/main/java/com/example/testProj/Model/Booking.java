@@ -14,6 +14,7 @@ import java.sql.Date;
 public class Booking {
     //@OneToOne pt foreign key si instanitezi un obiect al clasei!!!!
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

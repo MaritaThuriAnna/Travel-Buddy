@@ -66,7 +66,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/findUserById/{id}")
+    @PostMapping("/findUserById/{id}")
     public ResponseEntity<User> findUserById(@PathVariable Integer id) {
         User user = userServiceImplementation.findByUserId(id);
         return ResponseEntity.status(HttpStatus.OK).body(user);
@@ -80,6 +80,18 @@ public class UserController {
             return ResponseEntity.ok(user);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/Register")
+    public ResponseEntity<String> register(@RequestBody User newUser){
+        User user = userServiceImplementation.findByUserEmail(newUser.getUserEmail());
+
+        if(user != null){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User with this email already exists");
+        }else{
+            userServiceImplementation.Insert(newUser);
+            return ResponseEntity.status(HttpStatus.CREATED).body("user registered succesfully!");
         }
     }
 

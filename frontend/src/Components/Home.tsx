@@ -44,8 +44,8 @@ const Home = (): JSX.Element => {
       {user && (
         <div style={userStyleContainer}>
           <h3 style={userStyleHeader}>Your Profile</h3>
-          <p style={userStyle}>ID: {user.userId}</p>
-          <p style={userStyle}>Name: {user.userName}</p>
+          {/* <p style={userStyle}>ID: {user.userId}</p> */}
+          <p style={userStyle}>User Name: {user.userName}</p>
           <p style={userStyle}>Email: {user.userEmail}</p>
           {user.bookings && user.bookings.length > 0 ? (
             <div>

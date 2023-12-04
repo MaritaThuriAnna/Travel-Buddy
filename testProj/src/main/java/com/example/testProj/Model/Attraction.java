@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Attraction {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer attractionId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "destination_id")
