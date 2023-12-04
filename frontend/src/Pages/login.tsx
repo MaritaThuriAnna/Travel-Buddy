@@ -48,7 +48,9 @@ export const Login = (): JSX.Element => {
 
   return <div>
     {/* <div style={headerContainerStyle}></div> */}
+    <div style={headerContainerStyle}></div>
     <div style={parentDivStyle}>
+      
       <h1 style={headerStyle}>Welcome to WanderScape</h1>
       <h2 style={headerStyle}>Log In</h2>
       <div style={{ marginTop: 20 }}>

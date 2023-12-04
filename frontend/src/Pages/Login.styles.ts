@@ -48,13 +48,14 @@ export const loginButtonStyle: React.CSSProperties = {
 
 
 export const headerContainerStyle: React.CSSProperties = {
-    // display: 'flex',
-    // flexDirection: 'row-reverse', // Change 'row' to 'row-reverse'
+    display: 'flex',
+    flexDirection: 'row', // Change 'row-reverse' to 'row'
     alignItems: 'center',
-    // justifyContent: 'flex-start', // Align items at the top
-    backgroundColor: 'black', // Black background for the button container
-    padding: '10px', // Adjust padding as needed
-    borderRadius: '10px', // Add border-radius for rounded corners
-    width: '100', // Set width to 100% to span the entire screen
-    height: '300',
+    justifyContent: 'space-between', // Align items at the top and space between
+    backgroundColor: 'black',
+    padding: '10px',
+    borderRadius: '10px',
+    width: '100%',
+    height: '70px',
+    marginRight: '20 px',
   };

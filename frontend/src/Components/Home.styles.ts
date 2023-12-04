@@ -46,9 +46,9 @@ export const siteNameStyle: React.CSSProperties = {
 };
 
 export const logoStyle: React.CSSProperties = {
-  width: '65px', // Adjust the width of the logo
-  height: '50px', // Adjust the height of the logo
-  marginRight: '10px', // Adjust margin as needed
+  width: '65px', 
+  height: '50px', 
+  marginRight: '10px',
 };
 
 export const buttonStyle: React.CSSProperties = {
