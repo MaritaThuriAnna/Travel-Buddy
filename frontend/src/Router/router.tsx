@@ -5,6 +5,7 @@ import { Destinations } from '../Pages/destination';
 import Home from "../Components/Home";
 import DestinationDetail from "../Pages/destinationDetail";
 import Booking from "../Pages/booking";
+import Cazari from "../Components/Cazari";
 
 const routes: RouteObject[] = [
     // {
@@ -14,6 +15,10 @@ const routes: RouteObject[] = [
     {
         path: "/",
         element: <Login />
+    },
+    {
+        path: "/Cazari",
+        element:<Cazari accommodations={""}/>
     },
     {
         path: "/Home/:userId",
@@ -44,7 +49,7 @@ const routes: RouteObject[] = [
         element: <div>check out the locat attractions!</div>
     },
     {
-        path: "/Booking",
+        path:"/Booking/:userId",
         element: <Booking/>
     }
 ];

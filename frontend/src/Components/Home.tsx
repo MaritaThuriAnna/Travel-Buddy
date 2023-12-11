@@ -35,8 +35,8 @@ const Home = (): JSX.Element => {
     axios.get<HomeProps>(`http://localhost:8080/User/${userId}`)
       .then(response => {
         const userData = response.data;
+        const userID = response.data.userId;
 
-        // Fetch all bookings
         axios.get<Booking[]>(`http://localhost:8080/Bookings/ReadAll`)
           .then(bookingsResponse => {
             const userWithBookings: HomeProps = {
@@ -51,10 +51,12 @@ const Home = (): JSX.Element => {
       })
       .catch(userError => console.error('Error fetching user data', userError));
   }, [userId]);
+  
   if (!user) {
     return <div>Loading...</div>;
   }
-
+  const id = user.userId;
+  console.log("userId: ", id);
   return (
     <div >
       <div style={containerStyle}>
@@ -64,7 +66,7 @@ const Home = (): JSX.Element => {
           <Link to="/Destinations">
             <button style={buttonStyle}>View Our Destinations</button>
           </Link>
-          <Link to="/Booking">
+          <Link to= '/Booking/{id}'>
             <button style={buttonStyle}>Book a Trip</button>
           </Link>
         </div>

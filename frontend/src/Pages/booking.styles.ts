@@ -14,7 +14,7 @@ export const containerStyle: React.CSSProperties = {
     backgroundColor: 'white',
     padding: '15px',
     marginTop: '10px', // Add marginTop to push the container down
-};
+  };
 
 export const bookingSectionStyle: React.CSSProperties = {
     display: 'flex',
@@ -23,7 +23,7 @@ export const bookingSectionStyle: React.CSSProperties = {
     width: '100%', // Adjust the width as needed
 };
 
-export const headerContainerStyle: React.CSSProperties = {
+export const headerContainer: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -37,7 +37,7 @@ export const headerContainerStyle: React.CSSProperties = {
     maxWidth: '1000px', // Set the maxWidth for consistency
   };
 
-export const destinationContainer: React.CSSProperties = {
+  export const destinationContainer: React.CSSProperties = {
     // maxWidth: '1000px', // Set the same maxWidth for consistency
     width: '100%', // Use percentage for responsiveness
     // height: '100px',
@@ -49,20 +49,8 @@ export const destinationContainer: React.CSSProperties = {
     borderRadius: '10px',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: '10px'
+    marginBottom: '10px',
   };
-
-  
- 
- export const SearchBarContainer = styled('div')`
-  position: relative;
-  width: 1000px;
-  height: 90px;
-  margin: 20px auto; /* Adjust margin as needed */
-  background: #FFFFFF;
-  box-shadow: 0px 10px 30px rgba(123, 188, 176, 0.5);
-  border-radius: 10px;
-`;
 
 export const selectDestinationStyle: React.CSSProperties = {
     width: '33%', // Adjust the width as needed
@@ -78,15 +66,22 @@ export const selectAccommodationStyle: React.CSSProperties = {
 
 export const selectDatesStyle: React.CSSProperties = {
     width: '33%', // Adjust the width as needed
-    marginBottom: '10px',
+    // marginBottom: '10px',
 };
 
 export const bookButtonStyle: React.CSSProperties = {
     padding: '10px',
-    backgroundColor: 'white',
-    color: 'black',
+    backgroundColor: 'black',
+    color: 'white',
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
     fontFamily: 'Playfair Display',
-};
+    display: 'flex',
+    justifyContent: 'center', // Center the text horizontally
+    alignItems: 'center', // Center the text vertically
+    margin: 'auto',
+    height: '40px',
+    width: '200px',
+  };
+  

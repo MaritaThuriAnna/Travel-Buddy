@@ -9,7 +9,7 @@ import {
     bookButtonStyle,
     containerStyle,
     destinationContainer,
-    headerContainerStyle,
+    headerContainer,
     // bookingSectionStyle,
     // rowContainerStyle,
     selectAccommodationStyle,
@@ -18,6 +18,7 @@ import {
 } from './booking.styles';
 import { buttonContainerStyle, logoStyle, siteNameStyle } from '../Components/Home.styles';
 import SearchBar from '../Components/Searchbar';
+import { Link, useParams } from 'react-router-dom';
 
 const CustomDateRangePicker = styled(DateRangePicker)({
     width: '100%',
@@ -26,6 +27,18 @@ const CustomDateRangePicker = styled(DateRangePicker)({
     }
 });
 
+interface Booking {
+    bookingId: number;
+    user: {
+      userId: number;
+    };
+    destination: {  // Corrected from desinationId to destination
+      desinationId: number;
+    };
+    accomodationId: number;
+    checkIn: number;
+    checkOut: number;
+  }
 
 interface Destination {
     destinationId: number;
@@ -43,6 +56,7 @@ interface Accommodation {
 }
 
 const Booking = (): JSX.Element => {
+    const { userId } = useParams<{ userId: string }>();
     const [destinations, setDestinations] = useState([]);
     const [transformedDestinations, setTransformedDestinations] = useState([]);
     const [accommodations, setAccommodations] = useState<Accommodation[]>([]);
@@ -50,6 +64,7 @@ const Booking = (): JSX.Element => {
     const [selectedAccommodation, setSelectedAccommodation] = useState<Accommodation | null>(null);
 
     useEffect(() => {
+        
         const fetchData = async () => {
             try {
                 const [destinationsResponse, accommodationsResponse] = await Promise.all([
@@ -137,9 +152,45 @@ const Booking = (): JSX.Element => {
 
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-    const handleToggleDatePicker = () => {
-        setDatePickerVisibility(!isDatePickerVisible);
+
+    // const history = useHistory();
+
+    const handleBookNow = async () => {
+        if (!selectedAccommodation || !dateRange || dateRange.length === 0) {
+            console.error('Invalid booking details');
+            return;
+        }
+
+        const user_id = userId;
+
+        const bookingData = {
+            // Customize this based on your Booking class structure
+            user_id,
+            destinationId: selectedAccommodation.destination.destinationId,
+            accommodationId: selectedAccommodation.accomodationId,
+            checkIn: dateRange[0].startDate.toISOString(), // Convert to ISO string for consistency
+            checkOut: dateRange[0].endDate.toISOString(),
+        };
+
+        try {
+            const response = await fetch(`http://localhost:8080/Bookings/Insert`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bookingData),
+            });
+
+            if (response.ok) {
+                console.log('Booking successful');
+            } else {
+                console.error('Booking failed:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error during booking:', error);
+        }
     };
+
 
     return (
         <div>
@@ -150,6 +201,7 @@ const Booking = (): JSX.Element => {
                     <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
                     <div style={siteNameStyle}>WanderScape</div>
                 </div>
+
                 <div style={destinationContainer}>
                     <div style={selectDestinationStyle}>
                         <label>Select Destination:</label>
@@ -159,31 +211,33 @@ const Booking = (): JSX.Element => {
                             isSearchable
                         />
                     </div>
-               
 
-                <div style={selectAccommodationStyle}>
-                    <label>Select Accommodation:</label>
-                    <Select
-                        options={filteredAccommodations.map((accommodation) => ({
-                            label: accommodation.accomodationName,
-                            value: accommodation.accomodationId,
-                        }))}
-                        isSearchable
-                        onChange={handleAccommodationChange}
-                    />
-                </div>
 
-                <div style={selectDatesStyle}>
-                    <label>Select Dates:</label>
-                    <CustomDateRangePicker
-                        ranges={dateRange}
-                        onChange={handleDateChange}
-                    />
-                </div>
+                    <div style={selectAccommodationStyle}>
+                        <label>Select Accommodation:</label>
+                        <Select
+                            options={filteredAccommodations.map((accommodation) => ({
+                                label: accommodation.accomodationName,
+                                value: accommodation.accomodationId,
+                            }))}
+                            isSearchable
+                            onChange={handleAccommodationChange}
+                        />
+                    </div>
+
+                    <div style={selectDatesStyle}>
+                        <label>Select Dates:</label>
+                        <CustomDateRangePicker
+                            ranges={dateRange}
+                            onChange={handleDateChange}
+                        />
+                    </div>
                 </div>
             </div>
+            <Link to={`/Booking/${userId}`}>
+                <button style={bookButtonStyle}>Book a Trip</button>
+            </Link>
 
-            <button style={bookButtonStyle}>Book</button>
         </div>
 
         // </div>

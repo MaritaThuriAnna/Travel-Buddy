@@ -20,5 +20,5 @@ public class Attraction {
     private String attractionName;
     private String attractionType;
     private String attractionOpenHours;
-    private Float attractionTickets;
+//    private Float attractionOpenHours;
 }
