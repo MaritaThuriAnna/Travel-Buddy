@@ -18,11 +18,8 @@ public class User {
     private Integer userId;
     private String userName;
     private String userPassword;
-//    @Column(nullable = false, unique = true)
     private String userEmail;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Booking> bookings;
-
-
 }

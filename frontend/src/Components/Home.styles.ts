@@ -5,68 +5,59 @@ export const containerStyle: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'flex-start', // Align items at the top
-  height: '100vh', // Set the height to the viewport height
+  justifyContent: 'flex-start',
+  height: '100vh',
   backgroundColor: 'white',
-  // padding: '20px',
+  padding: '15px',
 };
 
 export const titleStyle: React.CSSProperties = {
-  display: 'flex',
-  position: 'fixed',
-  top: '20%',
-  flexDirection: 'column',
-  alignItems: 'center',
   fontSize: '2em',
   fontFamily: 'Playfair Display',
   color: 'black',
   fontWeight: 'bold',
-  marginBottom: '20px',
+  marginBottom: '0px',
+  textAlign: 'center', // Center text for better responsiveness
 };
 
 export const buttonContainerStyle: React.CSSProperties = {
   display: 'flex',
-  flexDirection: 'row', // Change 'row-reverse' to 'row'
+  flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'space-between', // Align items at the top and space between
+  justifyContent: 'space-between',
   backgroundColor: 'black',
-  padding: '10px',
+  padding: '5px',
   borderRadius: '10px',
   width: '100%',
   height: '70px',
-  marginRight: '20 px',
+  marginBottom: '10px', // Add margin at the bottom for spacing
 };
 
 export const siteNameStyle: React.CSSProperties = {
   color: 'white',
   fontFamily: 'Playfair Display',
   fontSize: '1.5em',
-  flexGrow: 1, 
-  //marginLeft: '20px', // Adjust margin as needed
+  flexGrow: 1,
 };
 
 export const logoStyle: React.CSSProperties = {
-  width: '65px', 
-  height: '50px', 
+  width: '65px',
+  height: '50px',
   marginRight: '10px',
 };
 
 export const buttonStyle: React.CSSProperties = {
   margin: '5px',
-  // marginLeft: '20px', // Adjust margin as needed
-  padding: '10px', // Adjust padding as needed
-  backgroundColor: 'white', // White background for the buttons
-  color: 'black', // Black text color
-  border: 'none', // Remove button border
-  borderRadius: '5px', // Add border-radius for rounded corners
-  cursor: 'pointer', // Show pointer cursor on hover
+  padding: '10px',
+  backgroundColor: 'white',
+  color: 'black',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
   fontFamily: 'Playfair Display',
 };
 
 export const userStyleHeader: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
   fontSize: '20px',
   fontFamily: 'Playfair Display',
   color: 'white',
@@ -75,25 +66,39 @@ export const userStyleHeader: React.CSSProperties = {
 };
 
 export const userStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  // alignItems: 'center',
+  marginTop: '10px',
   fontSize: '15px',
   fontFamily: 'Playfair Display',
   color: 'white',
   fontWeight: 'bold',
-  marginBottom: '10px',
+  marginBottom: '20px',
 };
 
 export const userStyleContainer: React.CSSProperties = {
   width: '300px',
-  height: '350px', // Set the height as needed
-  position: 'fixed',
-  display: 'box',
-  top: '50%', // Center vertically
-  transform: 'translateY(-50%)', // Center vertically
-  left: '20px', // Adjust the left margin as needed
+  display: 'flex',
+  flexDirection: 'column',
+  height: '350px',
+  top: '50px',
+  transform: 'translateY(-50%)',
+  margin: 'auto 10px', // Add margin for spacing
+  left: '10px',
   backgroundColor: 'black',
   padding: '10px',
   borderRadius: '10px',
+  alignItems: 'center',
 };
+
+
+
+// @media(max-width: 600px) {
+//   export const buttonContainerStyle: React.CSSProperties = {
+//     flexDirection: 'column', // Change to column layout for small screens
+//     height: 'auto', // Adjust height to fit content
+//   };
+
+//   export const userStyleContainer: React.CSSProperties = {
+//     width: '90%', // Adjust width for better responsiveness
+//     left: '5%', // Center horizontally on small screens
+//   };
+// }

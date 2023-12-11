@@ -9,10 +9,13 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AccomodationServiceImplementation implements AccomodationService{
     @Autowired
     private AccomodationRepository accomodationRepository;
+
     @Autowired
     private DestinationRepository destinationRepository;
     @Override
@@ -33,4 +36,15 @@ public class AccomodationServiceImplementation implements AccomodationService{
         accommodation.setDestination(destination);
         return accomodationRepository.save(accommodation);
     }
+
+    @Override
+    public List<Accomodation> ReadAll() {
+        return (List<Accomodation>) accomodationRepository.findAll();
+    }
+
+//    @Override
+//    public List<Accomodation> getAccomodationsByDestination(Integer destinationId) {
+//        // Implement the logic to fetch accommodations by destination from the repository
+//        return accomodationRepository.findByDestinationId(destinationId);
+//    }
 }

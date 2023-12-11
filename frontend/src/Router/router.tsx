@@ -4,6 +4,7 @@ import { Login } from "../Pages/login";
 import { Destinations } from '../Pages/destination';
 import Home from "../Components/Home";
 import DestinationDetail from "../Pages/destinationDetail";
+import Booking from "../Pages/booking";
 
 const routes: RouteObject[] = [
     // {
@@ -44,7 +45,7 @@ const routes: RouteObject[] = [
     },
     {
         path: "/Booking",
-        element: <div>Book now!</div>
+        element: <Booking/>
     }
 ];
 

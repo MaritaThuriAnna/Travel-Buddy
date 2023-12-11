@@ -4,42 +4,72 @@ import { Link, useParams } from 'react-router-dom';
 import { containerStyle, buttonContainerStyle, buttonStyle, userStyleHeader, userStyleContainer, userStyle, titleStyle, siteNameStyle, logoStyle } from './Home.styles';
 import axios from 'axios';
 
-interface HomeProps{
+interface HomeProps {
   userId: number;
-  userName : string;
-  userEmail : string;
+  userName: string;
+  userEmail: string;
   bookings: string[];
 }
 
-const Home = (): JSX.Element => {
-
-  const { userId  } = useParams<{ userId : string }>();
-  const [user, setUser] = useState<HomeProps | null>(null);
-  
-  useEffect(() => {
-    axios.get<HomeProps>(`http://localhost:8080/User/${userId}`)
-      .then(response => setUser(response.data))
-      .catch(error => console.error('Error fetching user data', error));
-      console.log(userId);
-  }, [userId]);
-
-  if (!user) {
-    return <div>Loading...</div>;
+interface Booking {
+  bookingId: number;
+  user: {
+    userId: number;
+  };
+  destination: {  // Corrected from desinationId to destination
+    desinationId: number;
+  };
+  accomodationId: number;
+  checkIn: number;
+  checkOut: number;
 }
 
+
+const Home = (): JSX.Element => {
+
+  const { userId } = useParams<{ userId: string }>();
+  const [user, setUser] = useState<HomeProps | null>(null);
+
+  useEffect(() => {
+    // Fetch user information
+    axios.get<HomeProps>(`http://localhost:8080/User/${userId}`)
+      .then(response => {
+        const userData = response.data;
+
+        // Fetch all bookings
+        axios.get<Booking[]>(`http://localhost:8080/Bookings/ReadAll`)
+          .then(bookingsResponse => {
+            const userWithBookings: HomeProps = {
+              userId: userData.userId,
+              userName: userData.userName,
+              userEmail: userData.userEmail,
+              bookings: bookingsResponse.data.map(booking => booking.bookingId.toString()), // Adjust based on your actual booking properties
+            };
+            setUser(userWithBookings);
+          })
+          .catch(bookingsError => console.error('Error fetching user bookings', bookingsError));
+      })
+      .catch(userError => console.error('Error fetching user data', userError));
+  }, [userId]);
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div style={containerStyle}>
-      <div style={buttonContainerStyle}>
-      <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
-      <div style={siteNameStyle}>WanderScape</div>
-        <Link to="/Destinations">
-          <button style={buttonStyle}>View Our Destinations</button>
-        </Link>
-        <Link to="/Booking">
-          <button style={buttonStyle}>Book a Trip</button>
-        </Link>
+    <div >
+      <div style={containerStyle}>
+        <div style={buttonContainerStyle}>
+          <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
+          <div style={siteNameStyle}>WanderScape</div>
+          <Link to="/Destinations">
+            <button style={buttonStyle}>View Our Destinations</button>
+          </Link>
+          <Link to="/Booking">
+            <button style={buttonStyle}>Book a Trip</button>
+          </Link>
+        </div>
+        <h2 style={titleStyle}>Welcome to the Homepage</h2>
       </div>
-      <h2 style={titleStyle}>Welcome to the Homepage</h2>
 
       {user && (
         <div style={userStyleContainer}>
@@ -58,9 +88,9 @@ const Home = (): JSX.Element => {
             </div>
           ) : (
             <p style={userStyle}>You haven't booked anything yet.</p>
-          )}  
-         </div>
-       )}  
+          )}
+        </div>
+      )}
 
     </div>
   );

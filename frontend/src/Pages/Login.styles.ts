@@ -5,23 +5,23 @@ export const headerStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '25px', // Set your desired font size
+    fontSize: '40px', // Set your desired font size
     fontFamily: 'Playfair Display',
     color: 'black',
 }
 
 export const parentDivStyle: React.CSSProperties = {
     display: 'flex',
-    margin: '20px auto',
+    margin: '0px auto',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     width: '350px',
     height: '400px',
     // margin: '0 auto',
-    padding: '20px',
+    padding: '0px',
     // backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent white
-    borderRadius: '10px',
+    borderRadius: '5px',
     backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent pink
 
   };
@@ -33,7 +33,7 @@ export const loginButtonStyle: React.CSSProperties = {
     justifyContent: 'center',
     left: 125,
     right: 125,
-    top: 75,
+    top: 55,
     bottom: '10px',
     cursor: 'pointer',
     borderRadius: '5px',
@@ -48,14 +48,14 @@ export const loginButtonStyle: React.CSSProperties = {
 
 
 export const headerContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'row', // Change 'row-reverse' to 'row'
-    alignItems: 'center',
-    justifyContent: 'space-between', // Align items at the top and space between
-    backgroundColor: 'black',
-    padding: '10px',
-    borderRadius: '10px',
-    width: '100%',
-    height: '70px',
-    marginRight: '20 px',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  padding: '10px',
+  borderRadius: '10px',
+  width: '100%',
+  height: '70px',
+  marginBottom: '0px', 
   };
