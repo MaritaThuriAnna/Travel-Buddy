@@ -8,7 +8,12 @@ interface HomeProps {
   userId: number;
   userName: string;
   userEmail: string;
-  bookings: string[];
+  bookings: Array<{
+    bookingId: string;
+    destinationName: string;
+    checkIn: string;
+    checkOut: string;
+  }>;
 }
 
 interface Booking {
@@ -18,6 +23,7 @@ interface Booking {
   };
   destination: {  // Corrected from desinationId to destination
     desinationId: number;
+    destinationName: string
   };
   accomodationId: number;
   checkIn: number;
@@ -35,7 +41,7 @@ const Home = (): JSX.Element => {
     axios.get<HomeProps>(`http://localhost:8080/User/${userId}`)
       .then(response => {
         const userData = response.data;
-        const userID = response.data.userId;
+        // const userID = response.data.userId;
 
         axios.get<Booking[]>(`http://localhost:8080/Bookings/ReadAll`)
           .then(bookingsResponse => {
@@ -43,7 +49,12 @@ const Home = (): JSX.Element => {
               userId: userData.userId,
               userName: userData.userName,
               userEmail: userData.userEmail,
-              bookings: bookingsResponse.data.map(booking => booking.bookingId.toString()), // Adjust based on your actual booking properties
+              bookings: bookingsResponse.data.map(booking => ({
+                bookingId: booking.bookingId.toString(),
+                destinationName: booking.destination.destinationName,
+                checkIn: new Date(booking.checkIn).toLocaleDateString(),
+                checkOut: new Date(booking.checkOut).toLocaleDateString(),
+              })),
             };
             setUser(userWithBookings);
           })
@@ -51,7 +62,7 @@ const Home = (): JSX.Element => {
       })
       .catch(userError => console.error('Error fetching user data', userError));
   }, [userId]);
-  
+
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -84,7 +95,11 @@ const Home = (): JSX.Element => {
               <p style={userStyle}>Your Bookings:</p>
               <ul style={userStyle}>
                 {user.bookings.map((booking, index) => (
-                  <li key={index}>{booking}</li>
+                  <li key={index}>
+                    
+                     Booking ID: {booking.bookingId} Destination: {booking.destinationName} Check-in: {booking.checkIn ? new Date(booking.checkIn).toLocaleDateString() : 'N/A'} Check-out: {booking.checkOut} 
+
+                  </li>
                 ))}
               </ul>
             </div>
