@@ -25,7 +25,6 @@ export const parentDivStyle: React.CSSProperties = {
     backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent pink
 
   };
-  
 
 export const loginButtonStyle: React.CSSProperties = {
     position: 'relative',
@@ -52,10 +51,10 @@ export const headerContainerStyle: React.CSSProperties = {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  padding: '10px',
+  backgroundColor: 'black',
+  padding: '5px',
   borderRadius: '10px',
   width: '100%',
   height: '70px',
-  marginBottom: '0px', 
+  marginBottom: '10px', //
   };

@@ -50,6 +50,7 @@ export const Login = (): JSX.Element => {
 
   return <div>
     <div style={containerStyle}>
+      
       <div style={headerContainerStyle}>
         <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
         <div style={siteNameStyle}>WanderScape</div>

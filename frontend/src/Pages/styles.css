@@ -1,0 +1,154 @@
+.index {
+    background-color: #efece7;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .index .div {
+    background-color: #efece7;
+    height: 1668px;
+    position: relative;
+    width: 1280px;
+  }
+  
+  .index .header {
+    height: 129px;
+    left: 25px;
+    position: absolute;
+    top: 30px;
+    width: 1229px;
+  }
+  
+  .index .promo {
+    height: 301px;
+    left: 25px;
+    position: absolute;
+    top: 224px;
+    width: 1229px;
+  }
+  
+  .index .trip-types {
+    height: 313px;
+    left: 51px;
+    position: absolute;
+    top: 1199px;
+    width: 1177px;
+  }
+  
+  .index .profile-card {
+    height: 601px;
+    left: 219px;
+    position: absolute;
+    top: 560px;
+    width: 858px;
+  }
+  
+  .index .overlap-group {
+    background-color: #000000;
+    border: 10px solid;
+    border-color: #96afba;
+    border-radius: 15px;
+    height: 601px;
+    position: relative;
+    width: 852px;
+  }
+  
+  .index .upcoming-trips-new {
+    color: #ffffff;
+    font-family: "Playfair Display", Helvetica;
+    font-size: 22px;
+    font-weight: 400;
+    left: 559px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 314px;
+    width: 249px;
+  }
+  
+  .index .user-data {
+    height: 67px;
+    left: 30px;
+    position: absolute;
+    top: 323px;
+    width: 388px;
+  }
+  
+  .index .flexcontainer {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    height: 67px;
+    position: relative;
+    width: 386px;
+  }
+  
+  .index .text {
+    align-self: stretch;
+    color: #ffffff;
+    font-family: "Playfair Display", Helvetica;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+  }
+  
+  .index .text-wrapper {
+    color: #ffffff;
+    font-family: "Playfair Display", Helvetica;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  
+  .index .overlap {
+    background-color: #96afba;
+    border-radius: 15px;
+    height: 59px;
+    left: 317px;
+    position: absolute;
+    top: 516px;
+    width: 176px;
+  }
+  
+  .index .text-wrapper-2 {
+    color: #000000;
+    font-family: "Playfair Display", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    left: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 11px;
+    width: 136px;
+  }
+  
+  .index .div-wrapper {
+    background-image: url(https://cdn.animaapp.com/projects/6571714dcee1d1813b898161/releases/65808a3d0b3671679323b0c2/img/vector-1.svg);
+    background-size: 100% 100%;
+    height: 285px;
+    left: 3px;
+    position: absolute;
+    top: 3px;
+    width: 844px;
+  }
+  
+  .index .text-wrapper-3 {
+    color: #000000;
+    font-family: "Playfair Display", Helvetica;
+    font-size: 40px;
+    font-weight: 600;
+    left: 302px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 29px;
+    width: 220px;
+  }
+  

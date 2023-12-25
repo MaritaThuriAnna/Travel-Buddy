@@ -6,6 +6,7 @@ import Home from "../Components/Home";
 import DestinationDetail from "../Pages/destinationDetail";
 import Booking from "../Pages/booking";
 import Cazari from "../Components/Cazari";
+import Profile from "../Pages/Profile";
 
 const routes: RouteObject[] = [
     // {
@@ -24,6 +25,10 @@ const routes: RouteObject[] = [
         path: "/Home/:userId",
         element: <Home />
     },    
+    {
+        path: "/Profile/:userId",
+        element: <Profile />
+    },
     {
         path: "/Destinations",
         element: <Destinations />

@@ -5,7 +5,7 @@ export const containerStyle: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'flex-start',
+  // justifyContent: 'flex-start',
   height: '100vh',
   backgroundColor: 'white',
   padding: '15px',
@@ -31,6 +31,19 @@ export const buttonContainerStyle: React.CSSProperties = {
   width: '100%',
   height: '70px',
   marginBottom: '10px', // Add margin at the bottom for spacing
+};
+export const profileButtonStyle: React.CSSProperties = {
+  position: 'relative',
+  alignContent: 'center',
+  justifyContent: 'center',
+  bottom: '10px',
+  cursor: 'pointer',
+  borderRadius: '5px',
+  marginTop: '10px',
+  fontFamily: 'Playfair Display',
+  color: 'white',
+  backgroundColor: 'black',
+  padding: '10px',
 };
 
 export const siteNameStyle: React.CSSProperties = {
@@ -58,7 +71,7 @@ export const buttonStyle: React.CSSProperties = {
 };
 
 export const userStyleHeader: React.CSSProperties = {
-  fontSize: '20px',
+  fontSize: '35px',
   fontFamily: 'Playfair Display',
   color: 'white',
   fontWeight: 'bold',
@@ -69,36 +82,186 @@ export const userStyle: React.CSSProperties = {
   marginTop: '10px',
   fontSize: '15px',
   fontFamily: 'Playfair Display',
-  color: 'white',
+  color: 'black',
   fontWeight: 'bold',
   marginBottom: '20px',
 };
 
 export const userStyleContainer: React.CSSProperties = {
-  width: '300px',
+  width: '100%',
   display: 'flex',
   flexDirection: 'column',
+  position:'relative',
   height: '350px',
-  top: '50px',
-  transform: 'translateY(-50%)',
+  // transform: 'translateXY(-50%)',
   margin: 'auto 10px', // Add margin for spacing
-  left: '10px',
-  backgroundColor: 'black',
+  // left: '460px',
+  backgroundColor: 'white',
   padding: '10px',
   borderRadius: '10px',
   alignItems: 'center',
+  top: '-230px',
+  justifyContent:'center'
+};
+
+export const promoImgContainer : React.CSSProperties ={
+  height: '40%',
+  left: '5px',
+  backgroundSize: 'contain',
+  backgroundPosition: 'center',
+  // backgroundRepeat: 'no-repeat',
+  overflow: 'hidden',
+  backgroundColor: 'none',
+  position: 'absolute',
+  top: '120px',
+  width: '99%',
+  padding: '5px',
+}
+
+export const promoImgStyle: React.CSSProperties ={
+  position: 'absolute', // Set position to absolute
+  width: '99%',
+  height: '100%', // Set the overlay's height to 100% of the button
+
+}
+
+export const promoImgOverlayStyle: React.CSSProperties = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  textAlign: 'center',
+  color: 'white',
+  fontFamily: 'Playfair Display',
+  fontSize: '43px',
+  fontWeight: 'bold',
+};
+
+// Home.styles.ts
+
+// ... (previous styles)
+
+export const arrowContainerStyle: React.CSSProperties = {
+  position: 'absolute',
+  top: '50%',
+  cursor: 'pointer',
+};
+
+export const leftArrowContainerStyle: React.CSSProperties = {
+  ...arrowContainerStyle,
+  left: '10px',
+  transform: 'translateY(-50%)',
 };
 
 
 
-// @media(max-width: 600px) {
-//   export const buttonContainerStyle: React.CSSProperties = {
-//     flexDirection: 'column', // Change to column layout for small screens
-//     height: 'auto', // Adjust height to fit content
-//   };
+export const rightArrowContainerStyle: React.CSSProperties = {
+  ...arrowContainerStyle,
+  right: '10px',
+  transform: 'translateY(-50%)',
+};
 
-//   export const userStyleContainer: React.CSSProperties = {
-//     width: '90%', // Adjust width for better responsiveness
-//     left: '5%', // Center horizontally on small screens
-//   };
-// }
+export const arrowStyle: React.CSSProperties = {
+  fontSize: '2em',
+  color: 'white',
+  transition: 'color 0.3s', 
+};
+
+export const hoverStyle: React.CSSProperties = {
+  color: 'rgba(255, 255, 255, 0.8)',
+};
+
+export const indicatorContainerStyle: React.CSSProperties = {
+  position: 'absolute',
+  bottom: '10px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  display: 'flex',
+};
+
+export const indicatorStyle: React.CSSProperties = {
+  width: '10px',
+  height: '10px',
+  borderRadius: '50%',
+  margin: '0 5px',
+  backgroundColor: 'white',
+  cursor: 'pointer',
+};
+
+export const squareContainerRowStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center', // Adjust as needed
+  flexWrap: 'wrap',
+  alignItems: 'flex-start', 
+  top: '-200px',
+  position: 'relative',
+  cursor: 'pointer',
+};
+
+export const squareContainerStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '300px',
+  height: '300px',
+  margin: '10px',
+  overflow: 'hidden',
+  position: 'relative',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s',
+  // top: '-300px' // Add transition for smooth color change
+};
+
+export const darkOverlayStyle: React.CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'rgba(0, 0, 0, 0.3)', // Adjust the opacity as needed
+  pointerEvents: 'none', // Allow clicks to go through the overlay
+};
+
+export const squareImageStyle: React.CSSProperties = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  transition: 'transform 0.3s ease-in-out',
+};
+
+export const squareTextOverlayStyle: React.CSSProperties = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  // right: '50%',
+  transform: 'translate(-50%, -50%)',
+  textAlign: 'right',
+  opacity: 1,
+  transition: 'opacity 0.3s ease-in-out',
+  color:'white',
+  fontFamily: 'Playfair Display',
+  fontSize: '50px',
+};
+
+export const squareContainerHoverStyle: React.CSSProperties = {
+  ...squareContainerStyle,
+};
+
+export const squareContainerHoveredStyle: React.CSSProperties = {
+  ...squareContainerStyle,
+  backgroundColor: 'rgba(0, 0, 0, 0.3)', // Adjust the background color on hover
+};
+
+export const squareImageHoveredStyle: React.CSSProperties = {
+  ...squareImageStyle,
+  transform: 'scale(1.1)', // Adjust the scale on hover
+};
+
+export const squareTextOverlayHoveredStyle: React.CSSProperties = {
+  ...squareTextOverlayStyle,
+  opacity: 5, // Show text on hover
+  color:'white',
+  fontFamily: 'Playfair Display',
+  fontSize: '50px',
+};

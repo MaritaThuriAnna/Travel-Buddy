@@ -19,6 +19,7 @@ import {
 import { buttonContainerStyle, logoStyle, siteNameStyle } from '../Components/Home.styles';
 import SearchBar from '../Components/Searchbar';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const CustomDateRangePicker = styled(DateRangePicker)({
     width: '100%',
@@ -30,15 +31,15 @@ const CustomDateRangePicker = styled(DateRangePicker)({
 interface Booking {
     bookingId: number;
     user: {
-      userId: number;
+        userId: number;
     };
     destination: {  // Corrected from desinationId to destination
-      desinationId: number;
+        desinationId: number;
     };
     accomodationId: number;
     checkIn: number;
     checkOut: number;
-  }
+}
 
 interface Destination {
     destinationId: number;
@@ -64,7 +65,7 @@ const Booking = (): JSX.Element => {
     const [selectedAccommodation, setSelectedAccommodation] = useState<Accommodation | null>(null);
 
     useEffect(() => {
-        
+
         const fetchData = async () => {
             try {
                 const [destinationsResponse, accommodationsResponse] = await Promise.all([
@@ -155,7 +156,8 @@ const Booking = (): JSX.Element => {
 
     // const history = useHistory();
 
-    const handleBookNow = async () => {
+    const handleBookNow = () => {
+
         if (!selectedAccommodation || !dateRange || dateRange.length === 0) {
             console.error('Invalid booking details');
             return;
@@ -164,31 +166,35 @@ const Booking = (): JSX.Element => {
         const user_id = userId;
 
         const bookingData = {
-            // Customize this based on your Booking class structure
-            user_id,
-            destinationId: selectedAccommodation.destination.destinationId,
-            accommodationId: selectedAccommodation.accomodationId,
-            checkIn: dateRange[0].startDate.toISOString(), // Convert to ISO string for consistency
+            user: {
+                userId: user_id,
+            },
+            desinationId: {
+                destinationId: selectedAccommodation.destination.destinationId,
+            },
+            accomodationId: selectedAccommodation.accomodationId,
+            checkIn: dateRange[0].startDate.toISOString(),
             checkOut: dateRange[0].endDate.toISOString(),
         };
 
-        try {
-            const response = await fetch(`http://localhost:8080/Bookings/Insert`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(bookingData),
-            });
 
-            if (response.ok) {
-                console.log('Booking successful');
-            } else {
-                console.error('Booking failed:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error during booking:', error);
-        }
+        console.log("user id: ", user_id);
+        console.log("dest id: ", bookingData.desinationId);
+        console.log("accom id: ", bookingData.accomodationId);
+        console.log("check in: ", bookingData.checkIn);
+        console.log("check out: ", bookingData.checkOut);
+
+        axios.post(`http://localhost:8080/Bookings/Insert`, bookingData)
+            .then(response => {
+                console.log("user id: ", user_id);
+                console.log("dest id: ",  bookingData.desinationId);
+                console.log("accom id: ", bookingData.accomodationId);
+                console.log("check in: ", bookingData.checkIn);
+                console.log("check out: ", bookingData.checkOut);
+            })
+            .catch(error => {
+                console.error('Error booking trip: ', error);
+            });
     };
 
 
@@ -234,9 +240,9 @@ const Booking = (): JSX.Element => {
                     </div>
                 </div>
             </div>
-            <Link to={`/Booking/${userId}`}>
-                <button style={bookButtonStyle}>Book a Trip</button>
-            </Link>
+            {/* <Link to={`/Booking/${userId}`}> */}
+            <button onClick={handleBookNow} style={bookButtonStyle}>Book a Trip</button>
+            {/* </Link> */}
 
         </div>
 
