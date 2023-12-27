@@ -13,4 +13,8 @@ public interface BookingService {
     Booking findFirstByBookingId(Integer id);
     Booking Delete(Integer id);
     Booking findById(Integer id);
+
+//    Booking getBookingDetails(Long bookingId);
+
+    Booking getBookingDetails(Integer bookingId);
 }

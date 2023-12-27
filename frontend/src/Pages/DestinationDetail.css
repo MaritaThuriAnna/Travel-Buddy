@@ -1,0 +1,281 @@
+/* DestinationDetail.css */
+
+.loading-spinner {
+    /* Add your loading spinner styles or use a library like react-spinners */
+}
+
+/* .destination-card {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+} */
+
+.destination-card h2 {
+    position: absolute;
+    width: 241px;
+    height: 53px;
+    left: 79px;
+    top: 256px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 53px;
+
+    color: #000000;
+}
+
+.destination-card .glimpse {
+    position: absolute;
+    width: 923px;
+    height: 64px;
+    left: 79px;
+    top: 874px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 64px;
+    color: #000000;
+}
+
+.destination-card h4 {
+
+    position: absolute;
+    width: 730px;
+    height: 354px;
+    left: 390px;
+    top: 1022px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 43px;
+
+    color: #000000;
+}
+
+.destination-card .eiffel_name {
+    position: absolute;
+    width: 730px;
+    height: 43px;
+    left: 390px;
+    top: 1022px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 43px;
+    color: #000000;
+}
+
+.destination-card .ntrdm_name {
+    /* Notre-Dame Cathedral */
+
+    position: absolute;
+    width: 730px;
+    height: 40px;
+    left: 119px;
+    top: 1479px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    /* identical to box height, or 125% */
+
+    color: #000000;
+
+
+
+}
+
+.destination-card .eiffel_text {
+    position: absolute;
+    width: 730px;
+    height: 280px;
+    left: 393px;
+    top: 1104px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 40px;
+    /* or 200% */
+
+    color: #000000;
+}
+
+.destination-card .ntrdm_text {
+    /* Notre-Dame Cathedral, a masterpiece of French Gothic architecture, is a cultural and religious landmark situated on the Île de la Cité. Construction began in the 12th century, and the cathedral has witnessed centuries of history. Known for its impressive flying buttresses, intricate gargoyles, and stunning rose windows, Notre-Dame is a symbol of Parisian heritage. While the cathedral endured a devastating fire in 2019, ongoing restoration efforts are working to restore this historical gem to its former glory. */
+
+    position: absolute;
+    width: 730px;
+    height: 280px;
+    left: 117px;
+    top: 1564px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 40px;
+    /* or 200% */
+
+    color: #000000;
+
+
+}
+
+
+.destination-card .imgParis {
+    /* paris 1 */
+
+    position: absolute;
+    width: 828px;
+    height: 525px;
+    left: 450px;
+    top: 251px;
+
+    /* background: url(paris.jpg); */
+    border-radius: 24px;
+
+}
+
+.destination-card .imgEiffel {
+    /* eiffel 1 */
+
+    position: absolute;
+    width: 272px;
+    height: 362px;
+    left: 79px;
+    top: 1022px;
+
+    /* background: url(eiffel.jpg); */
+    border-radius: 27px;
+}
+
+.destination-card .imgNtrdm {
+    /* notre_dame 1 */
+
+    position: absolute;
+    width: 267px;
+    height: 365px;
+    left: 893px;
+    top: 1479px;
+
+    /* background: url(notre_dame.jpg); */
+    border-radius: 27px;
+
+}
+
+.destination-card p {
+    /* Paris, often referred to as the "City of Love," is a captivating destination with a rich history, breathtaking architecture, and a vibrant cultural scene */
+
+    position: absolute;
+    width: 343px;
+    height: 187px;
+    left: 79px;
+    top: 407px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #000000;
+
+
+}
+
+.destination-card a {
+    /* View Accomodations */
+
+    position: absolute;
+    width: 189px;
+    height: 27px;
+    left: 79px;
+    top: 688px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 27px;
+    /* identical to box height */
+    text-align: center;
+    text-decoration-line: underline;
+
+    color: #000000;
+
+
+}
+
+.destination-card a:hover {
+    text-decoration: underline;
+}
+
+.destination-card .luvr_name {
+    /* Louvre Museum */
+
+    position: absolute;
+    width: 754.43px;
+    height: 40px;
+    left: 405.57px;
+    top: 1939px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    /* identical to box height, or 125% */
+
+    color: #000000;
+
+
+}
+
+.destination-card .luvr_text {
+    /* The Louvre Museum, housed in the Louvre Palace, is the largest art museum globally and a historic monument in Paris. Home to an extensive collection of art and artifacts, the Louvre showcases works from diverse cultures and time periods. Among its most famous exhibits are Leonardo da Vinci's "Mona Lisa," the ancient Greek statue "Venus de Milo," and the grand painting "Liberty Leading the People" by Eugène Delacroix. The Louvre's vast galleries span from ancient civilizations to the Renaissance, making it a captivating destination for art enthusiasts and history lovers alike. */
+
+    position: absolute;
+    width: 754.43px;
+    height: 320px;
+    left: 405px;
+    top: 2024px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 40px;
+    /* or 200% */
+
+    color: #000000;
+
+
+}
+
+.destination-card .imgLuvr {
+    /* louvre 1 */
+
+    position: absolute;
+    width: 281.1px;
+    height: 405px;
+    left: 79px;
+    top: 1939px;
+
+    /* background: url(louvre.jpg); */
+    border-radius: 26px;
+
+}

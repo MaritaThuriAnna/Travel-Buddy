@@ -54,4 +54,18 @@ public class BookingController {
         Booking result = bookingsServiceImplementation.Delete(id);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    @GetMapping("/Details/{bookingId}")
+    public ResponseEntity<Booking> getBookingDetails(@PathVariable Integer bookingId) {
+        try {
+            // Call the service method to get booking details
+            Booking booking = bookingsServiceImplementation.getBookingDetails(bookingId);
+
+            // Return the booking details in the response
+            return ResponseEntity.ok(booking);
+        } catch (Exception e) {
+            // Handle exceptions and return an error response
+            return ResponseEntity.status(500).body(null); // Adjust the status and body as needed
+        }
+    }
 }

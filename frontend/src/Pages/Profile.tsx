@@ -43,7 +43,8 @@ const Profile = (): JSX.Element => {
   };
 
   const handleUpdate = () => {
-    axios.put('http://localhost:8080/User/Update', editedUser)
+    axios
+      .put('http://localhost:8080/User/Update', editedUser)
       .then(response => {
         console.log('User updated:', response.data);
         setUser(response.data);

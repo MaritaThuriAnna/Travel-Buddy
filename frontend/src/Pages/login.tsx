@@ -3,7 +3,7 @@ import { Button, TextField } from "@mui/material"
 import { loginButtonStyle, parentDivStyle, headerStyle, headerContainerStyle } from "./Login.styles"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { containerStyle, logoStyle, siteNameStyle } from "../Components/Home.styles";
 
 
@@ -38,7 +38,7 @@ export const Login = (): JSX.Element => {
       .then((response) => {
         setUser(response.data);
         console.log("user: ", response.data);
-        
+
         console.log(response.data.userId);
         setUser(response.data)
         navigate(`/Home/${response.data.userId}`);
@@ -50,7 +50,7 @@ export const Login = (): JSX.Element => {
 
   return <div>
     <div style={containerStyle}>
-      
+
       <div style={headerContainerStyle}>
         <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
         <div style={siteNameStyle}>WanderScape</div>
@@ -66,8 +66,9 @@ export const Login = (): JSX.Element => {
           <TextField id="standard-basic" label="Password" variant="standard" onChange={onChangePassword} />
         </div>
         <Button style={loginButtonStyle} onClick={login} variant="contained">Login</Button>
-        <Button style={loginButtonStyle} onClick={login} variant="contained">Register</Button>
-
+        <Link to="/Register">
+        <Button style={loginButtonStyle}  variant="contained">Register</Button>
+        </Link>
       </div>
       <img src={`../login_images/login_bg.jpg`} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1 }} />
     </div>

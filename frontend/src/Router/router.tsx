@@ -7,6 +7,7 @@ import DestinationDetail from "../Pages/destinationDetail";
 import Booking from "../Pages/booking";
 import Cazari from "../Components/Cazari";
 import Profile from "../Pages/Profile";
+import Register from "../Pages/Register";
 
 const routes: RouteObject[] = [
     // {
@@ -16,6 +17,10 @@ const routes: RouteObject[] = [
     {
         path: "/",
         element: <Login />
+    },
+    {
+        path:"/Register",
+        element: <Register />
     },
     {
         path: "/Cazari",

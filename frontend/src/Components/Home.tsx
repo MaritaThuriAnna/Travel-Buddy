@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { containerStyle, buttonContainerStyle, squareContainerRowStyle, buttonStyle, userStyleHeader, userStyleContainer, userStyle, titleStyle, siteNameStyle, logoStyle, profileButtonStyle, promoImgStyle, promoImgContainer, promoImgOverlayStyle, leftArrowContainerStyle, hoverStyle, arrowStyle, squareContainerHoveredStyle, squareContainerHoverStyle, squareTextOverlayHoveredStyle, squareImageHoveredStyle, squareTextOverlayStyle, squareImageStyle, darkOverlayStyle } from './Home.styles';
 import axios from 'axios';
 import { buttonTextOverlayStyle, textStyle } from '../Pages/destinations.styles';
+import BookingDetails from '../Pages/BookingDetails';
 
 interface HomeProps {
   userId: number;
@@ -119,13 +120,13 @@ const Home = (): JSX.Element => {
 
       {user && (
         <div style={userStyleContainer}>
-          <h3 style={userStyleHeader}>Your Profile</h3>
+          <h3 style={userStyleHeader}>Your Info</h3>
           {/* <p style={userStyle}>ID: {user.userId}</p> */}
           <p style={userStyle}>User Name: {user.userName}</p>
           <p style={userStyle}>Email: {user.userEmail}</p>
-          {user.bookings && user.bookings.length > 0 ? (
+          {/* {user.bookings && user.bookings.length > 0 ? (
             <div>
-              <p style={userStyle}>Your Bookings:</p>
+              <p style={userStyle}>Upcoming trips:</p>
               <ul style={userStyle}>
                 {user.bookings.map((booking, index) => (
                   <li key={index}>
@@ -135,7 +136,7 @@ const Home = (): JSX.Element => {
             </div>
           ) : (
             <p style={userStyle}>You haven't booked anything yet.</p>
-          )}
+          )} */}
           
           <Link to={`/Profile/${user.userId}`}>
             <button style={profileButtonStyle}>Edit Profile</button>

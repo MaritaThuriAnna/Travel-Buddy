@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookingServiceImplementation implements BookingService {
@@ -47,5 +48,15 @@ public class BookingServiceImplementation implements BookingService {
                 .orElseThrow(() -> new EntityNotFoundException("Booking not found with id: " + id));
     }
 
+//    @Override
+//    public Booking getBookingDetails(Long bookingId) {
+//        return null;
+//    }
 
+
+    @Override
+    public Booking getBookingDetails(Integer bookingId) {
+        Optional<Booking> optionalBooking = bookingsRepository.findById(bookingId);
+        return optionalBooking.orElseThrow(() -> new EntityNotFoundException("Booking not found with id: " + bookingId));
+    }
 }

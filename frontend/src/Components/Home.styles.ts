@@ -73,7 +73,7 @@ export const buttonStyle: React.CSSProperties = {
 export const userStyleHeader: React.CSSProperties = {
   fontSize: '35px',
   fontFamily: 'Playfair Display',
-  color: 'white',
+  color: 'black',
   fontWeight: 'bold',
   marginBottom: '10px',
 };

@@ -169,17 +169,18 @@ const Booking = (): JSX.Element => {
             user: {
                 userId: user_id,
             },
-            desinationId: {
+            destination: {
                 destinationId: selectedAccommodation.destination.destinationId,
             },
             accomodationId: selectedAccommodation.accomodationId,
             checkIn: dateRange[0].startDate.toISOString(),
             checkOut: dateRange[0].endDate.toISOString(),
         };
+        
 
 
         console.log("user id: ", user_id);
-        console.log("dest id: ", bookingData.desinationId);
+        console.log("dest id: ", bookingData.destination);
         console.log("accom id: ", bookingData.accomodationId);
         console.log("check in: ", bookingData.checkIn);
         console.log("check out: ", bookingData.checkOut);
@@ -187,7 +188,7 @@ const Booking = (): JSX.Element => {
         axios.post(`http://localhost:8080/Bookings/Insert`, bookingData)
             .then(response => {
                 console.log("user id: ", user_id);
-                console.log("dest id: ",  bookingData.desinationId);
+                console.log("dest id: ",  bookingData.destination);
                 console.log("accom id: ", bookingData.accomodationId);
                 console.log("check in: ", bookingData.checkIn);
                 console.log("check out: ", bookingData.checkOut);

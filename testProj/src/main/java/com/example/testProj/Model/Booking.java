@@ -19,7 +19,8 @@ public class Booking {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "destination_id")
     private Destination desinationId;
     private Integer accomodationId;
     private Date checkIn;
