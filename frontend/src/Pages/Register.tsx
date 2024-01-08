@@ -94,12 +94,12 @@ const Register = (): JSX.Element => {
                 <br />
                 <label style={formLabelStyle}>
                     Email:
-                    <input type="email" name="userEmail" value={email} onChange={(e) => setName(e.target.value)} style={formInputStyle} />
+                    <input type="email" name="userEmail" value={email} onChange={(e) => setEmail(e.target.value)} style={formInputStyle} />
                 </label>
                 <br />
                 <label style={formLabelStyle}>
                     Password:
-                    <input type="password" name="userPassword" value={password} onChange={(e) => setName(e.target.value)} style={formInputStyle} />
+                    <input type="password" name="userPassword" value={password} onChange={(e) => setPassword(e.target.value)} style={formInputStyle} />
                 </label>
                 <br />
                 <button onClick={register} style={updateButtonStyle}>

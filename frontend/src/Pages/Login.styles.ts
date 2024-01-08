@@ -5,7 +5,7 @@ export const headerStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '40px', // Set your desired font size
+    fontSize: '40px', 
     fontFamily: 'Playfair Display',
     color: 'black',
 }
@@ -20,9 +20,9 @@ export const parentDivStyle: React.CSSProperties = {
     height: '400px',
     // margin: '0 auto',
     padding: '0px',
-    // backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent white
+    // backgroundColor: 'rgba(255, 255, 255, 0.8)', 
     borderRadius: '5px',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent pink
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
 
   };
 
@@ -36,13 +36,32 @@ export const loginButtonStyle: React.CSSProperties = {
     bottom: '10px',
     cursor: 'pointer',
     borderRadius: '5px',
-    transform: 'translateX(-50%)', // Center the element horizontally
+    transform: 'translateX(-50%)',
     marginTop: '10px',
     fontFamily: 'Playfair Display',
     color: 'white',
     backgroundColor: 'black',
     padding: '10px',
-    width: '70%', // Make the button fill the container's width
+    width: '70%', 
+};
+
+export const registerButtonStyle: React.CSSProperties = {
+  position: 'relative',
+  alignContent: 'center',
+  justifyContent: 'center',
+  left: 230,
+  right: 125,
+  top: 60,
+  bottom: '10px',
+  cursor: 'pointer',
+  borderRadius: '5px',
+  transform: 'translateX(-50%)', 
+  marginTop: '10px',
+  fontFamily: 'Playfair Display',
+  color: 'black',
+  // backgroundColor: 'black',
+  padding: '10px',
+  width: '70%', 
 };
 
 
@@ -56,5 +75,5 @@ export const headerContainerStyle: React.CSSProperties = {
   borderRadius: '10px',
   width: '100%',
   height: '70px',
-  marginBottom: '10px', //
+  marginBottom: '10px', 
   };

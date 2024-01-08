@@ -28,13 +28,13 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId }) => {
 
   return (
     <div>
-      <h2>Booking Details</h2>
+      {/* <h2>Booking Details</h2>
       <p>Booking ID: {bookingDetails.bookingId}</p>
       <p>User: {bookingDetails.user.userName}</p>
       <p>Destination: {bookingDetails.destination.destinationName}</p>
       <p>Accommodation: {bookingDetails.accommodation.accommodationName}</p>
-      <p>Check-In: {bookingDetails.checkIn}</p>
-      <p>Check-Out: {bookingDetails.checkOut}</p>
+      <p>Check-In: {bookingDetails.checkIn}</p> */}
+      {/* <p>Check-Out: {bookingDetails.checkOut}</p> */}
     </div>
   );
 };

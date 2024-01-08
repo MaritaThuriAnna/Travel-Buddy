@@ -33,7 +33,7 @@ interface Booking {
     user: {
         userId: number;
     };
-    destination: {  // Corrected from desinationId to destination
+    destination: {  
         desinationId: number;
     };
     accomodationId: number;
@@ -102,7 +102,6 @@ const Booking = (): JSX.Element => {
     }, []);
 
     const handleDestinationChange = (selectedOption: any) => {
-        // Handle the selected destination
         console.log('Selected Destination:', selectedOption);
 
         const filteredAccommodations = accommodations.filter(
@@ -111,16 +110,13 @@ const Booking = (): JSX.Element => {
         );
         console.log('Filtered Accommodations:', filteredAccommodations);
 
-        // Reset filtered accommodations and selected accommodation when the destination changes
         setFilteredAccommodations(filteredAccommodations);
         setSelectedAccommodation(null);
     };
 
     const handleAccommodationChange = (selectedOption: any) => {
-        // Handle the selected accommodation
         console.log('Selected Accommodation:', selectedOption);
 
-        // Find the selected accommodation details from the filteredAccommodations array
         const selectedAccommodationDetails = filteredAccommodations.find(
             (accommodation) => accommodation.accomodationId === selectedOption.value
         );

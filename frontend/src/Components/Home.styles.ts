@@ -1,4 +1,3 @@
-// Home.styles.ts
 import React from 'react';
 
 export const containerStyle: React.CSSProperties = {
@@ -17,7 +16,7 @@ export const titleStyle: React.CSSProperties = {
   color: 'black',
   fontWeight: 'bold',
   marginBottom: '0px',
-  textAlign: 'center', // Center text for better responsiveness
+  textAlign: 'center', 
 };
 
 export const buttonContainerStyle: React.CSSProperties = {
@@ -30,7 +29,7 @@ export const buttonContainerStyle: React.CSSProperties = {
   borderRadius: '10px',
   width: '100%',
   height: '70px',
-  marginBottom: '10px', // Add margin at the bottom for spacing
+  marginBottom: '10px', 
 };
 export const profileButtonStyle: React.CSSProperties = {
   position: 'relative',
@@ -94,7 +93,7 @@ export const userStyleContainer: React.CSSProperties = {
   position:'relative',
   height: '350px',
   // transform: 'translateXY(-50%)',
-  margin: 'auto 10px', // Add margin for spacing
+  margin: 'auto 10px',
   // left: '460px',
   backgroundColor: 'white',
   padding: '10px',
@@ -119,9 +118,9 @@ export const promoImgContainer : React.CSSProperties ={
 }
 
 export const promoImgStyle: React.CSSProperties ={
-  position: 'absolute', // Set position to absolute
+  position: 'absolute', 
   width: '99%',
-  height: '100%', // Set the overlay's height to 100% of the button
+  height: '100%', 
 
 }
 
@@ -136,10 +135,6 @@ export const promoImgOverlayStyle: React.CSSProperties = {
   fontSize: '43px',
   fontWeight: 'bold',
 };
-
-// Home.styles.ts
-
-// ... (previous styles)
 
 export const arrowContainerStyle: React.CSSProperties = {
   position: 'absolute',
@@ -190,7 +185,7 @@ export const indicatorStyle: React.CSSProperties = {
 
 export const squareContainerRowStyle: React.CSSProperties = {
   display: 'flex',
-  justifyContent: 'center', // Adjust as needed
+  justifyContent: 'center', 
   flexWrap: 'wrap',
   alignItems: 'flex-start', 
   top: '-200px',
@@ -210,7 +205,6 @@ export const squareContainerStyle: React.CSSProperties = {
   position: 'relative',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
-  // top: '-300px' // Add transition for smooth color change
 };
 
 export const darkOverlayStyle: React.CSSProperties = {
@@ -219,8 +213,8 @@ export const darkOverlayStyle: React.CSSProperties = {
   left: 0,
   width: '100%',
   height: '100%',
-  backgroundColor: 'rgba(0, 0, 0, 0.3)', // Adjust the opacity as needed
-  pointerEvents: 'none', // Allow clicks to go through the overlay
+  backgroundColor: 'rgba(0, 0, 0, 0.3)', 
+  pointerEvents: 'none', 
 };
 
 export const squareImageStyle: React.CSSProperties = {
@@ -250,17 +244,17 @@ export const squareContainerHoverStyle: React.CSSProperties = {
 
 export const squareContainerHoveredStyle: React.CSSProperties = {
   ...squareContainerStyle,
-  backgroundColor: 'rgba(0, 0, 0, 0.3)', // Adjust the background color on hover
+  backgroundColor: 'rgba(0, 0, 0, 0.3)', 
 };
 
 export const squareImageHoveredStyle: React.CSSProperties = {
   ...squareImageStyle,
-  transform: 'scale(1.1)', // Adjust the scale on hover
+  transform: 'scale(1.1)', 
 };
 
 export const squareTextOverlayHoveredStyle: React.CSSProperties = {
   ...squareTextOverlayStyle,
-  opacity: 5, // Show text on hover
+  opacity: 5, 
   color:'white',
   fontFamily: 'Playfair Display',
   fontSize: '50px',

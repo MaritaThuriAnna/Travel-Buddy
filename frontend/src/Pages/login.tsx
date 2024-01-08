@@ -1,6 +1,6 @@
 //login.tsx:
 import { Button, TextField } from "@mui/material"
-import { loginButtonStyle, parentDivStyle, headerStyle, headerContainerStyle } from "./Login.styles"
+import { loginButtonStyle, parentDivStyle, headerStyle, headerContainerStyle, registerButtonStyle } from "./Login.styles"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -66,8 +66,9 @@ export const Login = (): JSX.Element => {
           <TextField id="standard-basic" label="Password" variant="standard" onChange={onChangePassword} />
         </div>
         <Button style={loginButtonStyle} onClick={login} variant="contained">Login</Button>
-        <Link to="/Register">
-        <Button style={loginButtonStyle}  variant="contained">Register</Button>
+        <Link to="/Register" style={registerButtonStyle} >
+        {/* <Button style={registerButtonStyle}  variant="contained">Register</Button> */}
+        Register
         </Link>
       </div>
       <img src={`../login_images/login_bg.jpg`} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1 }} />

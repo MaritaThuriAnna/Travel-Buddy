@@ -17,5 +17,7 @@ public interface AccomodationService {
 
     List<Accomodation> ReadAll();
 
+    List<Accomodation> getAccommodationsByDestinationId(Integer destinationId);
+
 //    List<Accomodation> getAccomodationsByDestination(Integer destinationId);
 }

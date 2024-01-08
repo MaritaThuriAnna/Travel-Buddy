@@ -1,4 +1,3 @@
-// Profile.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
@@ -22,12 +21,11 @@ const Profile = (): JSX.Element => {
 
   useEffect(() => {
 
-    // Fetch user info
     axios.get<User>(`http://localhost:8080/User/${userId}`)
       .then(response => {
         const userData = response.data;
         setUser(userData);
-        setEditedUser(userData); // Set the edited user state
+        setEditedUser(userData); 
       })
       .catch(error => {
         console.error('Error fetching user data', error);

@@ -1,0 +1,107 @@
+.accom_card .rectangle{
+
+position: absolute;
+width: 1229px;
+height: 291px;
+left: 25px;
+top: 251px;
+
+background: #EDE6DB;
+border-radius: 27px;
+
+
+}
+
+.accom_card .img1{
+
+position: absolute;
+width: 291px;
+height: 291px;
+left: 25px;
+top: 251px;
+border-radius: 25px;
+
+}
+
+.accom_card .img2{
+   /* midtown_suites 1 */
+
+position: absolute;
+width: 315px;
+height: 315px;
+left: 135px;
+top: 729px;
+
+/* background: url(midtown_suites.jpg); */
+border-radius: 27px;
+
+}
+
+
+
+.accom_card .accom_name{
+/* Budget Inn */
+
+position: absolute;
+width: 202px;
+height: 53px;
+left: 357px;
+top: 268px;
+
+font-family: 'Playfair Display';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 53px;
+
+color: #000000;
+
+
+}
+
+.accom_card .accom_type{
+/* Type: Hotel */
+
+position: absolute;
+width: 159px;
+height: 40px;
+left: 357px;
+top: 422px;
+
+font-family: 'Playfair Display';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 40px;
+/* identical to box height */
+
+color: #000000;
+}
+
+.accom_card .price{/* Price per night : 50 $ */
+
+    position: absolute;
+    width: 392px;
+    height: 40px;
+    left: 357px;
+    top: 467px;
+    
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 40px;
+    /* identical to box height */
+    
+    color: #000000;
+    
+}
+
+.accom_card .stars{
+position: absolute;
+width: 158px;
+height: 53px;
+left: 927px;
+top: 353px;
+/* background: url(3 stars.png); */
+}

@@ -8,12 +8,10 @@ import Booking from "../Pages/booking";
 import Cazari from "../Components/Cazari";
 import Profile from "../Pages/Profile";
 import Register from "../Pages/Register";
+import Accommodations from "../Pages/accom";
+
 
 const routes: RouteObject[] = [
-    // {
-    //     path: "/",
-    //     element: <div>First Page</div>
-    // },
     {
         path: "/",
         element: <Login />
@@ -48,7 +46,7 @@ const routes: RouteObject[] = [
     },
     {
         path: '/Destinations/:destinationId/Accommodations',
-        element: <div>ACCOMODATIONS MIAU MIAU</div>
+        element: <Accommodations />
     },
     {
         path: "/Accommodations",

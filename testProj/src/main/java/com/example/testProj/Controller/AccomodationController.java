@@ -39,14 +39,21 @@ public class AccomodationController {
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
-//    @GetMapping("/ByDestination/{destinationId}")
-//    public ResponseEntity<List<Accomodation>> getAccomodationsByDestination(@PathVariable("destinationId") Integer id) {
-//        List<Accomodation> accomodations = accomodationServiceImplementation.getAccomodationsByDestination(id);
-//
-//        if (accomodations != null) {
-//            return ResponseEntity.ok(accomodations);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @GetMapping("/{destinationId}")
+    public ResponseEntity<List<Accomodation>> getAccommodationsByDestinationId(@PathVariable Integer destinationId) {
+        List<Accomodation> accommodations = accomodationServiceImplementation.getAccommodationsByDestinationId(destinationId);
+        return ResponseEntity.status(HttpStatus.OK).body(accommodations);
+    }
+
+    @GetMapping("/id")
+    public ResponseEntity<Accomodation> getAccomodationById(@PathVariable("id") Integer id){
+        Accomodation accomodation = accomodationServiceImplementation.getAccomodationById(id);
+
+        if(accomodation != null){
+            return ResponseEntity.ok(accomodation);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

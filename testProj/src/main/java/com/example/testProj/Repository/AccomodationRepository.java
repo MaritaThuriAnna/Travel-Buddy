@@ -2,6 +2,7 @@ package com.example.testProj.Repository;
 
 import com.example.testProj.Model.Accomodation;
 import com.example.testProj.Model.Booking;
+import com.example.testProj.Model.Destination;
 import com.example.testProj.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -14,6 +15,8 @@ import java.util.List;
 @EnableJpaRepositories
 public interface AccomodationRepository extends JpaRepository<Accomodation, Integer> {
     Accomodation findFirstByAccomodationId(Integer id);
+
+    List<Accomodation> findByDestination(Destination destination);
 
 //    List<Accomodation> findByDestinationId(Integer destinationId);
 //    List<Accomodation> ReadAll();

@@ -18,13 +18,24 @@ interface Booking {
   user: {
     userId: number;
   };
-  destination: {  // Corrected from desinationId to destination
+  destination: { 
     desinationId: number;
     destinationName: string
   };
   accomodationId: number;
   checkIn: number;
   checkOut: number;
+}
+
+interface Destination {
+  destinationId: number;
+  destinationName: string;
+}
+
+interface Accommodation {
+  accommodationId: number;
+  accommodationName: string;
+  pricePerNight: number;
 }
 
 
@@ -39,7 +50,6 @@ const Home = (): JSX.Element => {
   console.log("user id first: ", userId);
 
   useEffect(() => {
-    // Fetch user information
     axios.get<HomeProps>(`http://localhost:8080/User/${userId}`)
       .then(response => {
         const userData = response.data;
@@ -51,7 +61,7 @@ const Home = (): JSX.Element => {
               userId: userData.userId,
               userName: userData.userName,
               userEmail: userData.userEmail,
-              bookings: bookingsResponse.data.map(booking => booking.bookingId.toString()), // Adjust based on your actual booking properties
+              bookings: bookingsResponse.data.map(booking => booking.bookingId.toString()), 
             };
             setUser(userWithBookings);
           })
@@ -66,8 +76,27 @@ const Home = (): JSX.Element => {
   const id = user.userId;
   console.log("userId: ", id);
 
+  // const [destinations, setDestinations] = useState<Destination[]>([]);
+  // const [accommodations, setAccommodations] = useState<Accommodation[]>([]);
+
+  // useEffect(() => {
+  //   // Fetch destination information
+  //   axios.get<Destination[]>(`http://localhost:8080/Destinations/ReadAll`)
+  //     .then(destinationResponse => {
+  //       setDestinations(destinationResponse.data);
+  //     })
+  //     .catch(destinationError => console.error('Error fetching destination data', destinationError));
+
+  //   // Fetch accommodation information
+  //   axios.get<Accommodation[]>(`http://localhost:8080/Accommodations/ReadAll`)
+  //     .then(accommodationResponse => {
+  //       setAccommodations(accommodationResponse.data);
+  //     })
+  //     .catch(accommodationError => console.error('Error fetching accommodation data', accommodationError));
+  // }, []);
+  
   const images = ["../home_images/mountains2.jpg", "../home_images/under_sea_level.jpg", "../home_images/fin photo2.jpg"];
-  const texts = ["wether you prefer the view from the top", "or from under the sea level", "we will find the perfect adventure for you"]; // Add corresponding text for each image
+  const texts = ["wether you prefer the view from the top", "or from under the sea level", "we will find the perfect adventure for you"]; 
 
   const handleArrowClick = (direction: 'next' | 'prev') => {
     const newIndex = direction === 'next' ? (currentImageIndex + 1) % images.length : (currentImageIndex - 1 + images.length) % images.length;
@@ -121,22 +150,23 @@ const Home = (): JSX.Element => {
       {user && (
         <div style={userStyleContainer}>
           <h3 style={userStyleHeader}>Your Info</h3>
-          {/* <p style={userStyle}>ID: {user.userId}</p> */}
           <p style={userStyle}>User Name: {user.userName}</p>
           <p style={userStyle}>Email: {user.userEmail}</p>
-          {/* {user.bookings && user.bookings.length > 0 ? (
+           {user.bookings && user.bookings.length > 0 ? (
             <div>
               <p style={userStyle}>Upcoming trips:</p>
               <ul style={userStyle}>
                 {user.bookings.map((booking, index) => (
-                  <li key={index}>
-                  </li>
+                  <div key={index}>
+                    <BookingDetails key={index} bookingId={booking} />
+                    {/* <p>Destination: {}</p> */}
+                  </div>
                 ))}
               </ul>
             </div>
           ) : (
             <p style={userStyle}>You haven't booked anything yet.</p>
-          )} */}
+          )} 
           
           <Link to={`/Profile/${user.userId}`}>
             <button style={profileButtonStyle}>Edit Profile</button>

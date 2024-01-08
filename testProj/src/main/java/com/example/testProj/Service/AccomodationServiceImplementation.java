@@ -42,9 +42,16 @@ public class AccomodationServiceImplementation implements AccomodationService{
         return (List<Accomodation>) accomodationRepository.findAll();
     }
 
-//    @Override
-//    public List<Accomodation> getAccomodationsByDestination(Integer destinationId) {
-//        // Implement the logic to fetch accommodations by destination from the repository
-//        return accomodationRepository.findByDestinationId(destinationId);
-//    }
+    @Override
+    public List<Accomodation> getAccommodationsByDestinationId(Integer destinationId) {
+        Destination destination = destinationRepository.findById(destinationId)
+                .orElseThrow(() -> new EntityNotFoundException("Destination not found with id: " + destinationId));
+
+        return accomodationRepository.findByDestination(destination);
+    }
+
+    public Accomodation getAccomodationById(Integer id) {
+        return  accomodationRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Accom not found!"));
+    }
 }
