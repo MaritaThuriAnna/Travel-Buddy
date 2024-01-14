@@ -9,6 +9,10 @@ import Cazari from "../Components/Cazari";
 import Profile from "../Pages/Profile";
 import Register from "../Pages/Register";
 import Accommodations from "../Pages/accom";
+import { Admin } from "../Pages/Admin";
+import { DestinationAdmin } from "../Pages/DestinationAdmin";
+import { AccommodationAdmin } from "../Pages/AccommodationAdmin";
+import { AttractionAdmin } from "../Pages/AttractionAdmin";
 
 
 const routes: RouteObject[] = [
@@ -19,6 +23,22 @@ const routes: RouteObject[] = [
     {
         path:"/Register",
         element: <Register />
+    },
+    {
+        path:"/Admin",
+        element: <Admin />
+    },
+    {
+        path:"/DestinationAdmin",
+        element: <DestinationAdmin />
+    },
+    {
+        path:"/AccommodationAdmin",
+        element: <AccommodationAdmin />
+    },
+    {
+        path:"/AttractionAdmin",
+        element: <AttractionAdmin />
     },
     {
         path: "/Cazari",

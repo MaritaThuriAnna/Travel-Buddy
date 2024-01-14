@@ -1,73 +1,81 @@
 // Home.tsx
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { containerStyle, buttonContainerStyle, squareContainerRowStyle, buttonStyle, userStyleHeader, userStyleContainer, userStyle, titleStyle, siteNameStyle, logoStyle, profileButtonStyle, promoImgStyle, promoImgContainer, promoImgOverlayStyle, leftArrowContainerStyle, hoverStyle, arrowStyle, squareContainerHoveredStyle, squareContainerHoverStyle, squareTextOverlayHoveredStyle, squareImageHoveredStyle, squareTextOverlayStyle, squareImageStyle, darkOverlayStyle } from './Home.styles';
+import { containerStyle, buttonContainerStyle, squareContainerRowStyle, buttonStyle, userStyleHeader, userStyleContainer, userStyle, titleStyle, siteNameStyle, logoStyle, profileButtonStyle, promoImgStyle, promoImgContainer, promoImgOverlayStyle, leftArrowContainerStyle, hoverStyle, arrowStyle, squareContainerHoveredStyle, squareContainerHoverStyle, squareTextOverlayHoveredStyle, squareImageHoveredStyle, squareTextOverlayStyle, squareImageStyle, darkOverlayStyle, scrollBoxStyle, scrollListStyle } from './Home.styles';
 import axios from 'axios';
-import { buttonTextOverlayStyle, textStyle } from '../Pages/destinations.styles';
-import BookingDetails from '../Pages/BookingDetails';
 
 interface HomeProps {
   userId: number;
   userName: string;
   userEmail: string;
-  bookings: string[];
 }
 
 interface Booking {
   bookingId: number;
-  user: {
-    userId: number;
-  };
-  destination: { 
-    desinationId: number;
-    destinationName: string
-  };
-  accomodationId: number;
+  userId: number;
   checkIn: number;
   checkOut: number;
 }
 
-interface Destination {
-  destinationId: number;
-  destinationName: string;
-}
-
-interface Accommodation {
-  accommodationId: number;
-  accommodationName: string;
-  pricePerNight: number;
-}
 
 
 const Home = (): JSX.Element => {
 
   const { userId } = useParams<{ userId: string }>();
-  const [user, setUser] = useState<HomeProps | null>(null);
+  const [user, setUser] = useState<HomeProps | null>({
+    userId: 0, 
+    userName: '',
+    userEmail: ''
+  });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
   const [isSquareHovered, setIsSquareHovered] = useState(false)
 
+  const [bookings, setBookings] = useState<Booking[]>([]);
+
   console.log("user id first: ", userId);
 
   useEffect(() => {
-    axios.get<HomeProps>(`http://localhost:8080/User/${userId}`)
-      .then(response => {
-        const userData = response.data;
-        const userID = response.data.userId;
+    const fetchData = async () => {
+      try {
 
-        axios.get<Booking[]>(`http://localhost:8080/Bookings/ReadAll`)
-          .then(bookingsResponse => {
-            const userWithBookings: HomeProps = {
-              userId: userData.userId,
-              userName: userData.userName,
-              userEmail: userData.userEmail,
-              bookings: bookingsResponse.data.map(booking => booking.bookingId.toString()), 
-            };
-            setUser(userWithBookings);
-          })
-          .catch(bookingsError => console.error('Error fetching user bookings', bookingsError));
-      })
-      .catch(userError => console.error('Error fetching user data', userError));
+        const userDataResponse = await axios.get<HomeProps>(`http://localhost:8080/User/${userId}`);
+        if (!userDataResponse.data) {
+          console.error('User data not found');
+          return;
+        }
+        const userData = userDataResponse.data;
+        const userWithBookings: HomeProps = {
+          userId: userData.userId,
+          userName: userData.userName,
+          userEmail: userData.userEmail,
+          // bookings: bookingsResponse.data.map((booking) => booking.bookingId.toString()),
+        };
+        setUser(userWithBookings);
+
+        const bookingsResponse = await axios.get<Booking[]>(`http://localhost:8080/Bookings/FindByUserId/${userId}`);
+        if (!bookingsResponse.data) {
+          console.error('Bookings not found');
+          return;
+        }
+
+        // const bookData = bookingsResponse.data;
+
+        const userBookings: Booking[] = bookingsResponse.data.map((booking) => ({
+          bookingId: booking.bookingId,
+          userId: booking.userId,
+          checkIn: booking.checkIn,
+          checkOut: booking.checkOut,
+        }));
+
+        setBookings(userBookings);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, [userId]);
 
   if (!user) {
@@ -76,27 +84,8 @@ const Home = (): JSX.Element => {
   const id = user.userId;
   console.log("userId: ", id);
 
-  // const [destinations, setDestinations] = useState<Destination[]>([]);
-  // const [accommodations, setAccommodations] = useState<Accommodation[]>([]);
-
-  // useEffect(() => {
-  //   // Fetch destination information
-  //   axios.get<Destination[]>(`http://localhost:8080/Destinations/ReadAll`)
-  //     .then(destinationResponse => {
-  //       setDestinations(destinationResponse.data);
-  //     })
-  //     .catch(destinationError => console.error('Error fetching destination data', destinationError));
-
-  //   // Fetch accommodation information
-  //   axios.get<Accommodation[]>(`http://localhost:8080/Accommodations/ReadAll`)
-  //     .then(accommodationResponse => {
-  //       setAccommodations(accommodationResponse.data);
-  //     })
-  //     .catch(accommodationError => console.error('Error fetching accommodation data', accommodationError));
-  // }, []);
-  
   const images = ["../home_images/mountains2.jpg", "../home_images/under_sea_level.jpg", "../home_images/fin photo2.jpg"];
-  const texts = ["wether you prefer the view from the top", "or from under the sea level", "we will find the perfect adventure for you"]; 
+  const texts = ["wether you prefer the view from the top", "or from under the sea level", "we will find the perfect adventure for you"];
 
   const handleArrowClick = (direction: 'next' | 'prev') => {
     const newIndex = direction === 'next' ? (currentImageIndex + 1) % images.length : (currentImageIndex - 1 + images.length) % images.length;
@@ -147,33 +136,40 @@ const Home = (): JSX.Element => {
 
 
 
-      {user && (
-        <div style={userStyleContainer}>
-          <h3 style={userStyleHeader}>Your Info</h3>
-          <p style={userStyle}>User Name: {user.userName}</p>
-          <p style={userStyle}>Email: {user.userEmail}</p>
-           {user.bookings && user.bookings.length > 0 ? (
-            <div>
-              <p style={userStyle}>Upcoming trips:</p>
-              <ul style={userStyle}>
-                {user.bookings.map((booking, index) => (
-                  <div key={index}>
-                    <BookingDetails key={index} bookingId={booking} />
-                    {/* <p>Destination: {}</p> */}
-                  </div>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <p style={userStyle}>You haven't booked anything yet.</p>
-          )} 
-          
-          <Link to={`/Profile/${user.userId}`}>
+      <div>
+        {user && (
+          <div style={userStyleContainer}>
+            <h3 style={userStyleHeader}>User Info:</h3>
+            <p style={userStyle}>User Name: {user.userName}</p>
+            <p style={userStyle}>Email: {user.userEmail}</p>
+
+            {bookings.length > 0 ? (
+              <div >
+                <h3 style={userStyle}>Upcoming Trips:</h3>
+                <div style={scrollBoxStyle}>
+                  <ul style={scrollListStyle}>
+                    {bookings.map((booking) => (
+                      <li key={booking.bookingId} style={userStyle}>
+                        <p style={userStyle}>Booking ID: {booking.bookingId}</p>
+                        <p style={userStyle}>Check-In: {booking.checkIn}</p>
+                        <p style={userStyle}>Check-Out: {booking.checkOut}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <p style={userStyle}>No bookings found.</p>
+            )}
+            <Link to={`/Profile/${user.userId}`}>
             <button style={profileButtonStyle}>Edit Profile</button>
           </Link>
+          </div>
+        )}
 
-        </div>
-      )}
+
+      </div>
+      );
 
       <div style={squareContainerRowStyle}>
         <div
@@ -184,7 +180,7 @@ const Home = (): JSX.Element => {
           <img src="../home_images/couples beach.jpg" alt="Image 1" style={isSquareHovered ? squareImageHoveredStyle : squareImageStyle} />
           {isSquareHovered && <div style={darkOverlayStyle}></div>}
           <div style={isSquareHovered ? squareTextOverlayHoveredStyle : squareTextOverlayStyle}>Romantic Resort Getaway</div>
-          
+
         </div>
 
         <div

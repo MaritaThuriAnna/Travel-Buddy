@@ -1,6 +1,8 @@
 package com.example.testProj.Controller;
 
 import com.example.testProj.Model.Accomodation;
+import com.example.testProj.Model.Booking;
+import com.example.testProj.Model.Destination;
 import com.example.testProj.Model.User;
 import com.example.testProj.Service.AccomodationServiceImplementation;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +46,11 @@ public class AccomodationController {
         List<Accomodation> accommodations = accomodationServiceImplementation.getAccommodationsByDestinationId(destinationId);
         return ResponseEntity.status(HttpStatus.OK).body(accommodations);
     }
+    @PutMapping("/Update")
+    public ResponseEntity<Accomodation> update(@RequestBody Accomodation accomodation){
+        Accomodation updateAccom = accomodationServiceImplementation.Update(accomodation);
+        return ResponseEntity.status(HttpStatus.OK).body(updateAccom);
+    }
 
     @GetMapping("/id")
     public ResponseEntity<Accomodation> getAccomodationById(@PathVariable("id") Integer id){
@@ -54,6 +61,12 @@ public class AccomodationController {
         }else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @DeleteMapping("/Delete/{id}")
+    public ResponseEntity<Accomodation> delete(@PathVariable("id")Integer id){
+        Accomodation result = accomodationServiceImplementation.Delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
 }

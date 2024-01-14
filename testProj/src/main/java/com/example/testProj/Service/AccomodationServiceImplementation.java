@@ -54,4 +54,15 @@ public class AccomodationServiceImplementation implements AccomodationService{
         return  accomodationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Accom not found!"));
     }
+    @Override
+    public Accomodation Update(Accomodation accomodation) {
+        return accomodationRepository.save(accomodation);
+    }
+    @Override
+    public Accomodation Delete(Integer id) {
+        Accomodation accomToDelete = accomodationRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Accom not found!"));
+        accomodationRepository.delete(accomToDelete);
+        return accomToDelete;
+    }
 }

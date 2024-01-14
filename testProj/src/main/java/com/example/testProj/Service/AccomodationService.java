@@ -19,5 +19,9 @@ public interface AccomodationService {
 
     List<Accomodation> getAccommodationsByDestinationId(Integer destinationId);
 
+    Accomodation Update(Accomodation accomodation);
+
+    Accomodation Delete(Integer id);
+
 //    List<Accomodation> getAccomodationsByDestination(Integer destinationId);
 }

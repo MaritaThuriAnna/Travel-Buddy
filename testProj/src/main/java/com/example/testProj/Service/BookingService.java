@@ -17,4 +17,6 @@ public interface BookingService {
 //    Booking getBookingDetails(Long bookingId);
 
     Booking getBookingDetails(Integer bookingId);
+
+    List<Booking> getBookingsByUserId(Integer userId);
 }

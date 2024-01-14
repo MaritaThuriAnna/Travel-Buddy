@@ -70,7 +70,7 @@ export const buttonStyle: React.CSSProperties = {
 };
 
 export const userStyleHeader: React.CSSProperties = {
-  fontSize: '35px',
+  fontSize: '25px',
   fontFamily: 'Playfair Display',
   color: 'black',
   fontWeight: 'bold',
@@ -91,16 +91,16 @@ export const userStyleContainer: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   position:'relative',
-  height: '350px',
-  // transform: 'translateXY(-50%)',
+  height: '450px',
   margin: 'auto 10px',
-  // left: '460px',
   backgroundColor: 'white',
   padding: '10px',
   borderRadius: '10px',
   alignItems: 'center',
   top: '-230px',
-  justifyContent:'center'
+  justifyContent:'center',
+  overflow: 'hidden',
+  marginTop: '20px',
 };
 
 export const promoImgContainer : React.CSSProperties ={
@@ -258,4 +258,19 @@ export const squareTextOverlayHoveredStyle: React.CSSProperties = {
   color:'white',
   fontFamily: 'Playfair Display',
   fontSize: '50px',
+};
+
+export const scrollBoxStyle: React.CSSProperties = {
+  overflowY: 'auto',
+  maxHeight: '150px', // Adjust the max height as needed
+  border: '1px solid #ccc',
+  borderRadius: '5px',
+  padding: '10px',
+  margin: '10px 0',
+};
+
+export const scrollListStyle: React.CSSProperties = {
+  listStyleType: 'none',
+  padding: '0',
+  margin: '0',
 };

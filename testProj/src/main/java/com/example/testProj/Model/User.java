@@ -16,6 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+    private Boolean isAdmin;
     private String userName;
     private String userPassword;
     private String userEmail;

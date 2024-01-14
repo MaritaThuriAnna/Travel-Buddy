@@ -37,11 +37,20 @@ export const Login = (): JSX.Element => {
       })
       .then((response) => {
         setUser(response.data);
+
+        console.log("isAdmin: ", response.data.isAdmin);
+        if (response.data.isAdmin === true) {
+          // Redirect to admin page
+          navigate(`/Admin`);
+        } else {
+          // Redirect to user page
+          navigate(`/Home/${response.data.userId}`);
+        }
         console.log("user: ", response.data);
 
         console.log(response.data.userId);
         setUser(response.data)
-        navigate(`/Home/${response.data.userId}`);
+        // navigate(`/Home/${response.data.userId}`);
       })
       .catch((error) => {
         console.error("Login failed", error);

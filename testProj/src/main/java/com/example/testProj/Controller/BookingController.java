@@ -68,4 +68,19 @@ public class BookingController {
             return ResponseEntity.status(500).body(null); // Adjust the status and body as needed
         }
     }
+
+    @GetMapping("/FindByUserId/{userId}")
+    public ResponseEntity<List<Booking>> getBookingsByUserId(@PathVariable Integer userId) {
+        try {
+            // Call the service method to get bookings by user ID
+            List<Booking> bookings = bookingsServiceImplementation.getBookingsByUserId(userId);
+
+            // Return the bookings in the response
+            return ResponseEntity.ok(bookings);
+        } catch (Exception e) {
+            // Handle exceptions and return an error response
+            return ResponseEntity.status(500).body(null); // Adjust the status and body as needed
+        }
+    }
+
 }
