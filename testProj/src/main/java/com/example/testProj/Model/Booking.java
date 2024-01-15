@@ -16,9 +16,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "destination_id")
     private Destination desinationId;

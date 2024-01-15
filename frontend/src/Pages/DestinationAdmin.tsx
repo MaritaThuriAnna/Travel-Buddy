@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { formInputStyle, formLabelStyle, profileContainerStyle } from "./Profile.styles";
+import { buttonContainerStyle, containerStyle, logoStyle, siteNameStyle } from "../Components/Home.styles";
 
 export const DestinationAdmin = (): JSX.Element => {
     const [destinations, setDestinations] = useState([]);
@@ -72,7 +74,7 @@ export const DestinationAdmin = (): JSX.Element => {
                     destinationCurrency: "",
                     destinationTimezone: "",
                 });
-                setInsertError(""); 
+                setInsertError("");
             })
             .catch((error) => console.error("Error inserting destination:", error));
     };
@@ -149,163 +151,178 @@ export const DestinationAdmin = (): JSX.Element => {
 
     return (
         <div>
-            <h1>Destinations Administrative Page</h1>
-            <h2>Add a Destination</h2>
-            {insertError && <p style={{ color: "red" }}>{insertError}</p>}
-            <form>
-                <div>
-                    <label>Destination Name:</label>
-                    <input
-                        type="text"
-                        value={newDestination.destinationName}
-                        onChange={(e) =>
-                            setNewDestination({
-                                ...newDestination,
-                                destinationName: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Destination Language:</label>
-                    <input
-                        type="text"
-                        value={newDestination.destinationLanguage}
-                        onChange={(e) =>
-                            setNewDestination({
-                                ...newDestination,
-                                destinationLanguage: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Destination Currency:</label>
-                    <input
-                        type="text"
-                        value={newDestination.destinationCurrency}
-                        onChange={(e) =>
-                            setNewDestination({
-                                ...newDestination,
-                                destinationCurrency: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Destination Timezone:</label>
-                    <input
-                        type="text"
-                        value={newDestination.destinationTimezone}
-                        onChange={(e) =>
-                            setNewDestination({
-                                ...newDestination,
-                                destinationTimezone: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <button type="button" onClick={handleInsert}>
-                    Insert
-                </button>
-            </form>
+            <div style={containerStyle}>
 
-            <h2>Update a Destination</h2>
-            {updateError && <p style={{ color: "red" }}>{updateError}</p>}
-            <form>
-                <div>
-                    <label>Select Destination to Update:</label>
-                    <select
-                        onChange={(e) => handleDestinationSelection(e.target.value)}
-                        value={updateDestination.destinationName}
-                    >
-                        <option value="">Select Destination</option>
-                        {destinations.map((destination: Destination) => (
-                            <option key={destination.destinationId} value={destination.destinationName}>
-                                {destination.destinationName}
-                            </option>
-                        ))}
-                    </select>
+                <div style={buttonContainerStyle}>
+
+                    <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
+
+                    <div style={siteNameStyle}>WanderScape</div>
+
                 </div>
 
-                <div>
-                    <label>Updated Destination Name:</label>
-                    <input
-                        type="text"
-                        value={updateDestination.destinationName}
-                        onChange={(e) =>
-                            setUpdateDestination({
-                                ...updateDestination,
-                                destinationName: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Updated Destination Language:</label>
-                    <input
-                        type="text"
-                        value={updateDestination.destinationLanguage}
-                        onChange={(e) =>
-                            setUpdateDestination({
-                                ...updateDestination,
-                                destinationLanguage: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Updated Destination Currency:</label>
-                    <input
-                        type="text"
-                        value={updateDestination.destinationCurrency}
-                        onChange={(e) =>
-                            setUpdateDestination({
-                                ...updateDestination,
-                                destinationCurrency: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Updated Destination Timezone:</label>
-                    <input
-                        type="text"
-                        value={updateDestination.destinationTimezone}
-                        onChange={(e) =>
-                            setUpdateDestination({
-                                ...updateDestination,
-                                destinationTimezone: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <button type="button" onClick={handleUpdate}>
-                    Update
-                </button>
-            </form>
+            </div>
 
-            <h2>Delete a Destination</h2>
-            {deleteError && <p style={{ color: "red" }}>{deleteError}</p>}
-            <form>
-                <div>
-                    <label>Select Destination to Delete:</label>
-                    <select
-                        onChange={(e) => handleDestinationSelectionForDelete(e.target.value)}
-                        value={deleteDestination.destinationName}
-                    >
-                        <option value="">Select Destination</option>
-                        {destinations.map((destination: Destination) => (
-                            <option key={destination.destinationId} value={destination.destinationName}>
-                                {destination.destinationName}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <button type="button" onClick={handleDelete}>
-                    Delete
-                </button>
-            </form>
+            <div style={profileContainerStyle}>
+                <h1>Destinations Administrative Page</h1>
+
+                <h2>Add a Destination</h2>
+                {insertError && <p style={{ color: "red" }}>{insertError}</p>}
+                <form>
+                    <div>
+                        <label style={formLabelStyle}>Destination Name:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={newDestination.destinationName}
+                            onChange={(e) =>
+                                setNewDestination({
+                                    ...newDestination,
+                                    destinationName: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label style={formLabelStyle}>Destination Language:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={newDestination.destinationLanguage}
+                            onChange={(e) =>
+                                setNewDestination({
+                                    ...newDestination,
+                                    destinationLanguage: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label style={formLabelStyle}>Destination Currency:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={newDestination.destinationCurrency}
+                            onChange={(e) =>
+                                setNewDestination({
+                                    ...newDestination,
+                                    destinationCurrency: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label style={formLabelStyle}>Destination Timezone:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={newDestination.destinationTimezone}
+                            onChange={(e) =>
+                                setNewDestination({
+                                    ...newDestination,
+                                    destinationTimezone: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <button type="button" onClick={handleInsert}>
+                        Insert
+                    </button>
+                </form>
+
+                <h2>Update a Destination</h2>
+                {updateError && <p style={{ color: "red" }}>{updateError}</p>}
+                <form>
+                    <div>
+                        <label style={formLabelStyle}>Select Destination to Update:</label>
+                        <select style={formInputStyle}
+                            onChange={(e) => handleDestinationSelection(e.target.value)}
+                            value={updateDestination.destinationName}
+                        >
+                            <option value="">Select Destination</option>
+                            {destinations.map((destination: Destination) => (
+                                <option key={destination.destinationId} value={destination.destinationName}>
+                                    {destination.destinationName}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style={formLabelStyle}>Updated Destination Name:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={updateDestination.destinationName}
+                            onChange={(e) =>
+                                setUpdateDestination({
+                                    ...updateDestination,
+                                    destinationName: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label style={formLabelStyle}>Updated Destination Language:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={updateDestination.destinationLanguage}
+                            onChange={(e) =>
+                                setUpdateDestination({
+                                    ...updateDestination,
+                                    destinationLanguage: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label style={formLabelStyle}>Updated Destination Currency:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={updateDestination.destinationCurrency}
+                            onChange={(e) =>
+                                setUpdateDestination({
+                                    ...updateDestination,
+                                    destinationCurrency: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label style={formLabelStyle}>Updated Destination Timezone:</label>
+                        <input style={formInputStyle}
+                            type="text"
+                            value={updateDestination.destinationTimezone}
+                            onChange={(e) =>
+                                setUpdateDestination({
+                                    ...updateDestination,
+                                    destinationTimezone: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <button type="button" onClick={handleUpdate}>
+                        Update
+                    </button>
+                </form>
+
+                <h2 >Delete a Destination</h2>
+                {deleteError && <p style={{ color: "red" }}>{deleteError}</p>}
+                <form>
+                    <div>
+                        <label style={formLabelStyle}>Select Destination to Delete:</label>
+                        <select style={formInputStyle}
+                            onChange={(e) => handleDestinationSelectionForDelete(e.target.value)}
+                            value={deleteDestination.destinationName}
+                        >
+                            <option style={formInputStyle} value="">Select Destination</option>
+                            {destinations.map((destination: Destination) => (
+                                <option key={destination.destinationId} value={destination.destinationName}>
+                                    {destination.destinationName}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <button type="button" onClick={handleDelete}>
+                        Delete
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

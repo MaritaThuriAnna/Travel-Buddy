@@ -18,5 +18,5 @@ public interface BookingService {
 
     Booking getBookingDetails(Integer bookingId);
 
-    List<Booking> getBookingsByUserId(Integer userId);
+//    List<Booking> getBookingsByUserId(Integer userId);
 }

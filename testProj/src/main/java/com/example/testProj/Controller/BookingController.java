@@ -2,6 +2,7 @@ package com.example.testProj.Controller;
 
 import com.example.testProj.DTO.ObiectNou;
 import com.example.testProj.Model.Booking;
+import com.example.testProj.Repository.UserRepository;
 import com.example.testProj.Service.BookingServiceImplementation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.relational.core.sql.In;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequestMapping("/Bookings")
 public class BookingController {
     private final BookingServiceImplementation bookingsServiceImplementation;
+    private final UserRepository userrepo;
     @GetMapping("/GetData")
     public ResponseEntity getMessage(){
         return ResponseEntity.status(HttpStatus.OK).body("miau");
@@ -73,7 +75,7 @@ public class BookingController {
     public ResponseEntity<List<Booking>> getBookingsByUserId(@PathVariable Integer userId) {
         try {
             // Call the service method to get bookings by user ID
-            List<Booking> bookings = bookingsServiceImplementation.getBookingsByUserId(userId);
+            List<Booking> bookings = userrepo.findByUserId(userId).getBookings();
 
             // Return the bookings in the response
             return ResponseEntity.ok(bookings);

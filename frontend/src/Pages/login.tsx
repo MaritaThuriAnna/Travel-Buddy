@@ -17,6 +17,7 @@ export const Login = (): JSX.Element => {
   const [user, setUser] = useState<HomeProps | null>(null);
   const { userId } = useParams<{ userId: string }>();
   const navigate = useNavigate();
+  const [insertError, setInsertError] = useState("");
 
   const onChangeEmail = (event: any): void => {
     setEmail(event.target.value)
@@ -28,6 +29,11 @@ export const Login = (): JSX.Element => {
 
 
   const login = (): void => {
+    if(!email || !password ){
+      setInsertError("All fields are required for login.");
+      console.log("Error message set:", insertError);
+      return;
+  }
     axios
       .get("http://localhost:8080/User/Login", {
         params: {
@@ -58,6 +64,7 @@ export const Login = (): JSX.Element => {
   };
 
   return <div>
+    
     <div style={containerStyle}>
 
       <div style={headerContainerStyle}>
@@ -65,7 +72,7 @@ export const Login = (): JSX.Element => {
         <div style={siteNameStyle}>WanderScape</div>
       </div>
       <div style={parentDivStyle}>
-
+  
         {/* <h1 style={headerStyle}>Welcome to WanderScape</h1> */}
         <h2 style={headerStyle}>Log In</h2>
         <div style={{ marginTop: 20 }}>
@@ -79,8 +86,10 @@ export const Login = (): JSX.Element => {
         {/* <Button style={registerButtonStyle}  variant="contained">Register</Button> */}
         Register
         </Link>
+        {/* {insertError && <p style={{ color: "red" }}>{insertError}</p>} */}
       </div>
-      <img src={`../login_images/login_bg.jpg`} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1 }} />
+      {insertError && <p style={{ color: "red" }}>{insertError}</p>}
+      {/* <img src={`../login_images/login_bg.jpg`} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1 }} /> */}
     </div>
   </div>
 }

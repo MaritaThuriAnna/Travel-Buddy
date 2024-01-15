@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { formInputStyle, formLabelStyle, profileContainerStyle, updateButtonStyle } from "./Profile.styles";
+import { buttonContainerStyle, containerStyle, logoStyle, siteNameStyle } from "../Components/Home.styles";
 
 interface Accomodation {
     accomodationId: number;
@@ -206,15 +208,28 @@ export const AccommodationAdmin = (): JSX.Element => {
 
 
     return (
-        <div>
+<div>
+        <div style={containerStyle}>
+
+        <div style={buttonContainerStyle}>
+
+          <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
+
+          <div style={siteNameStyle}>WanderScape</div>
+
+        </div>
+
+      </div>
+
+        <div  style={profileContainerStyle}>
             <h1>Accommodations Administrative Page</h1>
 
             <h2>Add Accommodation</h2>
             {insertError && <p style={{ color: "red" }}>{insertError}</p>}
             <form>
                 <div>
-                    <label>Destination: </label>
-                    <select
+                    <label style={formLabelStyle}>Destination: </label>
+                    <select style={formLabelStyle}
                         value={newAccom.destinationId}
                         onChange={(e) =>
                             setNewAccom({
@@ -223,7 +238,7 @@ export const AccommodationAdmin = (): JSX.Element => {
                             })
                         }
                     >
-                        <option value="">Select Destination</option>
+                        <option style={formInputStyle} value="">Select Destination</option>
                         {destinations.map((destination: Destination) => (
                             <option key={destination.destinationId} value={destination.destinationId}>
                                 {destination.destinationName}
@@ -233,8 +248,8 @@ export const AccommodationAdmin = (): JSX.Element => {
                     </select>
                 </div>
                 <div>
-                    <label>Accomodation Name: </label>
-                    <input
+                    <label style={formLabelStyle}>Accomodation Name: </label>
+                    <input style={formInputStyle}
                         type="text"
                         value={newAccom.accomodationName}
                         onChange={(e) =>
@@ -246,8 +261,8 @@ export const AccommodationAdmin = (): JSX.Element => {
                     />
                 </div>
                 <div>
-                    <label>Accommodation Type: </label>
-                    <input
+                    <label style={formLabelStyle}>Accommodation Type: </label>
+                    <input style={formInputStyle}
                         type="text"
                         value={newAccom.accomodationType}
                         onChange={(e) =>
@@ -259,8 +274,8 @@ export const AccommodationAdmin = (): JSX.Element => {
                     />
                 </div>
                 <div>
-                    <label>Accommodation Price Per Night:   </label>
-                    <input
+                    <label style={formLabelStyle}>Accommodation Price Per Night:   </label>
+                    <input style={formInputStyle}
                         type="text"
                         value={newAccom.accomodationPricePerNight}
                         onChange={(e) =>
@@ -271,7 +286,7 @@ export const AccommodationAdmin = (): JSX.Element => {
                         }
                     />
                 </div>
-                <button type="button" onClick={handleInsert}>
+                <button style={updateButtonStyle} type="button" onClick={handleInsert}>
                     Insert
                 </button>
             </form>
@@ -281,12 +296,12 @@ export const AccommodationAdmin = (): JSX.Element => {
             {updateError && <p style={{ color: "red" }}>{updateError}</p>}
             <form>
                 <div>
-                    <label>Select an accomodation to update:  </label>
-                    <select
+                    <label style={formLabelStyle}>Select an accomodation to update:  </label>
+                    <select style={formLabelStyle}
                         onChange={(e) => handleAccomSelection(e.target.value)}
                         value={updateAccom.accomodationName}
                     >
-                        <option value="">Select Accommodation</option>
+                        <option style={formInputStyle} value="">Select Accommodation</option>
                         {accoms.map((accom: Accomodation) => (
                             <option key={accom.accomodationId} value={accom.accomodationName}>
                                 {accom.accomodationName}
@@ -295,8 +310,8 @@ export const AccommodationAdmin = (): JSX.Element => {
                     </select>
                 </div>
                 <div>
-                    <label>Destination: </label>
-                    <select
+                    <label style={formLabelStyle}>Destination: </label>
+                    <select style={formInputStyle}
                         value={updateAccom.destinationId}
                         onChange={(e) =>
                             setUpdateAccom({
@@ -314,8 +329,8 @@ export const AccommodationAdmin = (): JSX.Element => {
                     </select>
                 </div>
                 <div>
-                    <label>Updated Accommodation Name: </label>
-                    <input
+                    <label style={formLabelStyle}>Updated Accommodation Name: </label>
+                    <input style={formInputStyle}
                         type="text"
                         value={updateAccom.accomodationName}
                         onChange={(e) =>
@@ -327,8 +342,8 @@ export const AccommodationAdmin = (): JSX.Element => {
                     />
                 </div>
                 <div>
-                    <label>Updated Accommodation Type: </label>
-                    <input
+                    <label style={formLabelStyle}>Updated Accommodation Type: </label>
+                    <input style={formInputStyle}
                         type="text"
                         value={updateAccom.accomodationType}
                         onChange={(e) =>
@@ -340,8 +355,8 @@ export const AccommodationAdmin = (): JSX.Element => {
                     />
                 </div>
                 <div>
-                    <label>Updated Accommodation Price Per Night: </label>
-                    <input
+                    <label style={formLabelStyle}>Updated Accommodation Price Per Night: </label>
+                    <input style={formInputStyle}
                         type="text"
                         value={updateAccom.accomodationPricePerNight}
                         onChange={(e) =>
@@ -352,7 +367,7 @@ export const AccommodationAdmin = (): JSX.Element => {
                         }
                     />
                 </div>
-                <button type="button" onClick={handleUpdate}>
+                <button type="button" style={updateButtonStyle} onClick={handleUpdate}>
                     Update
                 </button>
             </form>
@@ -362,8 +377,8 @@ export const AccommodationAdmin = (): JSX.Element => {
             {deleteError && <p style={{ color: "red" }}>{deleteError}</p>}
             <form>
                 <div>
-                    <label>Select Accommodation to Delete:</label>
-                    <select
+                    <label style={formLabelStyle}>Select Accommodation to Delete:</label>
+                    <select style={formLabelStyle}
                         onChange={(e) => handleAccomSelectionForDelete(e.target.value)}
                         value={deleteAccom.accomodationName}
                     >
@@ -375,11 +390,12 @@ export const AccommodationAdmin = (): JSX.Element => {
                         ))}
                     </select>
                 </div>
-                <button type="button" onClick={handleDelete}>
+                <button type="button" style={updateButtonStyle} onClick={handleDelete}>
                     Delete
                 </button>
             </form>
 
+        </div>
         </div>
     )
 }

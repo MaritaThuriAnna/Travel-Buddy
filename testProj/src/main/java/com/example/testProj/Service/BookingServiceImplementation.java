@@ -59,8 +59,5 @@ public class BookingServiceImplementation implements BookingService {
         Optional<Booking> optionalBooking = bookingsRepository.findById(bookingId);
         return optionalBooking.orElseThrow(() -> new EntityNotFoundException("Booking not found with id: " + bookingId));
     }
-    @Override
-    public List<Booking> getBookingsByUserId(Integer userId) {
-        return bookingsRepository.findByUserUserId(userId);
-    }
+
 }

@@ -1,6 +1,7 @@
 // Admin.jsx
 import React from "react";
 import { Link } from "react-router-dom";
+import { updateButtonStyle } from "./Profile.styles";
 
 export const Admin = (): JSX.Element => {
     return (
@@ -8,22 +9,22 @@ export const Admin = (): JSX.Element => {
             <h1>Admin Page</h1>
             <div>
                 <Link to="/DestinationAdmin">
-                    <button type="button">Destination Admin</button>
+                    <button style={updateButtonStyle} type="button">Destination Admin</button>
                 </Link>
             </div>
             <div>
                 <Link to="/AttractionAdmin">
-                    <button type="button">Attraction Admin</button>
+                    <button style={updateButtonStyle} type="button">Attraction Admin</button>
                 </Link>
             </div>
             <div>
                 <Link to="/AccommodationAdmin">
-                    <button type="button">Accommodation Admin</button>
+                    <button style={updateButtonStyle} type="button">Accommodation Admin</button>
                 </Link>
             </div>
             <div>
                 <Link to="/userAdmin">
-                    <button type="button">User Admin</button>
+                    <button style={updateButtonStyle} type="button">User Admin</button>
                 </Link>
             </div>
         </div>

@@ -8,11 +8,12 @@ interface HomeProps {
   userId: number;
   userName: string;
   userEmail: string;
+  bookings: string;
 }
 
 interface Booking {
   bookingId: number;
-  userId: number;
+  // userId: number;
   checkIn: number;
   checkOut: number;
 }
@@ -25,8 +26,10 @@ const Home = (): JSX.Element => {
   const [user, setUser] = useState<HomeProps | null>({
     userId: 0, 
     userName: '',
-    userEmail: ''
+    userEmail: '',
+    bookings: '',
   });
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLeftArrowHovered, setIsLeftArrowHovered] = useState(false);
   const [isSquareHovered, setIsSquareHovered] = useState(false)
@@ -49,7 +52,7 @@ const Home = (): JSX.Element => {
           userId: userData.userId,
           userName: userData.userName,
           userEmail: userData.userEmail,
-          // bookings: bookingsResponse.data.map((booking) => booking.bookingId.toString()),
+          bookings: userData.bookings
         };
         setUser(userWithBookings);
 
@@ -59,11 +62,9 @@ const Home = (): JSX.Element => {
           return;
         }
 
-        // const bookData = bookingsResponse.data;
-
         const userBookings: Booking[] = bookingsResponse.data.map((booking) => ({
           bookingId: booking.bookingId,
-          userId: booking.userId,
+          // userId: booking.userId,
           checkIn: booking.checkIn,
           checkOut: booking.checkOut,
         }));

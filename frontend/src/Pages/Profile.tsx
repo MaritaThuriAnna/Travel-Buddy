@@ -113,7 +113,7 @@ const Profile = (): JSX.Element => {
         });
     });
   }, [bookings]);
-  
+  console.log("dest: ", destinationNames)
   
   if (!user) {
     return <div>Loading...</div>;
@@ -166,7 +166,7 @@ const Profile = (): JSX.Element => {
           <h2>Your Bookings</h2>
           {bookings.map((booking) => (
             <div key={booking.bookingId}>
-              <p>Destination: {destinationNames[booking.destinationId]}</p>
+              {/* <p>Destination: {destinationNames[booking.destinationId]}</p> */}
               <p>Booking ID: {booking.bookingId}</p>
               <p>Booking Date: {booking.checkIn} - {booking.checkOut}</p>
               <button onClick={() => handleDeleteBooking(booking.bookingId)}>
