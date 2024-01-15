@@ -13,6 +13,7 @@ import { Admin } from "../Pages/Admin";
 import { DestinationAdmin } from "../Pages/DestinationAdmin";
 import { AccommodationAdmin } from "../Pages/AccommodationAdmin";
 import { AttractionAdmin } from "../Pages/AttractionAdmin";
+import { UserAdmin } from "../Pages/userAdmin";
 
 
 const routes: RouteObject[] = [
@@ -39,6 +40,10 @@ const routes: RouteObject[] = [
     {
         path:"/AttractionAdmin",
         element: <AttractionAdmin />
+    },
+    {
+        path:"/userAdmin",
+        element: <UserAdmin />
     },
     {
         path: "/Cazari",

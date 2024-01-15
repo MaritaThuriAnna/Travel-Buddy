@@ -51,7 +51,6 @@ export const DestinationAdmin = (): JSX.Element => {
     };
 
     //INSERT
-
     const handleInsert = () => {
         if (
             !newDestination.destinationName ||
@@ -73,7 +72,7 @@ export const DestinationAdmin = (): JSX.Element => {
                     destinationCurrency: "",
                     destinationTimezone: "",
                 });
-                setInsertError(""); // Clear error message on successful insert
+                setInsertError(""); 
             })
             .catch((error) => console.error("Error inserting destination:", error));
     };

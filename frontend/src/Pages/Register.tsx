@@ -11,10 +11,19 @@ const Register = (): JSX.Element => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [name, setName] = useState<string>("");
-
+    const [insertError, setInsertError] = useState("");
 
 
     const register = () => {
+        if (
+            !name ||
+            !email ||
+            !password) 
+            {
+            setInsertError("All fields are required for insertion.");
+            console.log("Error message set:", insertError);
+            return;
+        }
 
         const newUser = {
             userName: name,
@@ -34,43 +43,6 @@ const Register = (): JSX.Element => {
     };
 
     return (
-        // <div>
-
-        //     <div style={containerStyle}>
-
-        //         <div style={buttonContainerStyle}>
-        //             <img src="../home_images/globe.png" alt="Logo" style={logoStyle} />
-        //             <div style={siteNameStyle}>WanderScape</div>
-        //         </div>
-
-        //         <div style={profileContainerStyle}>
-        //             <h1>Register</h1>
-        //             <label style={formLabelStyle}>
-        //                 Name:
-        //                 <input type="text" name="userName" value={name} onChange={(e) => setName(e.target.value)} style={formInputStyle} />
-        //             </label>
-        //             <br />
-        //             <label style={formLabelStyle}>
-        //                 Email:
-        //                 <input type="email" name="userEmail" value={email} onChange={(e) => setEmail(e.target.value)} style={formInputStyle} />
-        //             </label>
-        //             <br />
-        //             <label style={formLabelStyle}>
-        //                 Password:
-        //                 <input type="password" name="userPassword" value={password} onChange={(e) => setPassword(e.target.value)} style={formInputStyle} />
-        //             </label>
-        //             <br />
-        //             <button onClick={register} style={updateButtonStyle}>
-        //                 Register
-        //             </button>
-        //             {/* Use Link to navigate back to the login page */}
-        //             <div>
-        //                 <Link to="/">Already have an account? Log in</Link>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-
         <div>
 
             <div style={containerStyle}>
@@ -87,6 +59,7 @@ const Register = (): JSX.Element => {
 
             <div style={profileContainerStyle}>
                 <h1>Register Sheet</h1>
+                {insertError && <p style={{ color: "red" }}>{insertError}</p>}
                 <label style={formLabelStyle}>
                     Name:
                     <input type="text" name="userName" value={name} onChange={(e) => setName(e.target.value)} style={formInputStyle} />

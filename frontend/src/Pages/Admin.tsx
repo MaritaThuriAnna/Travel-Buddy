@@ -21,6 +21,11 @@ export const Admin = (): JSX.Element => {
                     <button type="button">Accommodation Admin</button>
                 </Link>
             </div>
+            <div>
+                <Link to="/userAdmin">
+                    <button type="button">User Admin</button>
+                </Link>
+            </div>
         </div>
     );
 };
